@@ -1,1 +1,14 @@
-[]
+[
+  {
+    "id": "men-s-multi-60-tablets",
+    "name": "Men’s Multi 60 Tablets",
+    "brand": "Herbs of Gold",
+    "price": "47.49",
+    "wasPrice": "",
+    "category": "vitamins",
+    "subtitle": "Made in Australia from Herbal Extracts, Vitamins & Minerals, Gluten Free & Vegan Friendly, May Support Energy Production & General Health for Males",
+    "tags": "Australian Made, Dairy Free, Gluten Free, Vegan",
+    "image": "https://raw.githubusercontent.com/chandranravindran/wholelife-signage/main/images/men-s-multi-60-tablets.png",
+    "updatedAt": "2026-04-20T20:10:57Z"
+  }
+]
