@@ -10,5 +10,17 @@
     "tags": "Australian Made, Dairy Free, Gluten Free, Vegan",
     "image": "https://raw.githubusercontent.com/chandranravindran/wholelife-signage/main/images/men-s-multi-60-tablets.png",
     "updatedAt": "2026-04-20T20:10:57Z"
+  },
+  {
+    "id": "men-s-ultivite-50-years-90-tablets",
+    "name": "Men’s Ultivite 50+ Years – 90 Tablets",
+    "brand": "He",
+    "price": "58.99",
+    "wasPrice": "",
+    "category": "vitamins",
+    "subtitle": "Swisse Men’s Ultivite 50+ contains 40 premium quality vitamins, minerals, antioxidants and herbs to help support men aged 50+ meet their nutritional needs and maintain general wellbeing. *This product",
+    "tags": "",
+    "image": "https://raw.githubusercontent.com/chandranravindran/wholelife-signage/main/images/men-s-ultivite-50-years-90-tablets.png",
+    "updatedAt": "2026-04-20T20:20:31Z"
   }
 ]
