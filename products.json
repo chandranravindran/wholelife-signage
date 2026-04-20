@@ -34,5 +34,17 @@
     "tags": "",
     "image": "https://raw.githubusercontent.com/chandranravindran/wholelife-signage/main/images/primal-multi-120-capsules.png",
     "updatedAt": "2026-04-20T20:42:18Z"
+  },
+  {
+    "id": "echinacea-garlic-zinc-c-125-tablets",
+    "name": "Echinacea, Garlic, Zinc + C 125 Tablets",
+    "brand": "Herbs of Gold",
+    "price": "29.99",
+    "wasPrice": "32.99",
+    "category": "vitamins",
+    "subtitle": "A vitamin, mineral and herbal supplement, specially formulated to reduce the duration and severity of common cold symptoms. *This product is not available in our WholeLife Healthfoods Markets stores b",
+    "tags": "Your Immunity Kit",
+    "image": "https://raw.githubusercontent.com/chandranravindran/wholelife-signage/main/images/echinacea-garlic-zinc-c-125-tablets.png",
+    "updatedAt": "2026-04-20T20:50:52Z"
   }
 ]
