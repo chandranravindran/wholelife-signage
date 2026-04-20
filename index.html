@@ -1,0 +1,569 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>WholeLife Pharmacy — Digital Signage</title>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&display=swap" rel="stylesheet">
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+/* ═══════════════════════════════════════════════════════════
+   THEME SETTINGS — Change these to restyle everything
+   ═══════════════════════════════════════════════════════════ */
+:root {
+  /* Background */
+  --bg: #0A0A0A;                /* Main background: #0A0A0A=dark, #FFFFFF=white, #0F1F17=dark green */
+
+  /* WholeLife brand colours */
+  --brand: #2D6A4F;             /* Primary green (header, footer, price pill, border) */
+  --brand-dark: #1B4332;        /* Darker green (gradients) */
+  --brand-light: #A8D5BA;       /* Light green (subtitles, ticker text) */
+  --brand-bright: #52B788;      /* Bright green (dots, progress bar) */
+  --ticker-bg: #0F2E1F;         /* Ticker band background */
+
+  /* Border frame */
+  --border-width: 5px;          /* Set to 0 to remove the border */
+  --border-color: var(--brand);
+  --border-inner: rgba(82,183,136,0.2);
+
+  /* Text */
+  --text: #FFFFFF;              /* Main text colour */
+  --text-muted: rgba(255,255,255,0.5);
+  --text-dim: rgba(255,255,255,0.35);
+
+  /* Price */
+  --price-bg: var(--brand);     /* Price pill background */
+  --save-bg: #D64045;           /* SAVE badge red */
+
+  /* Tags */
+  --tag-bg: rgba(255,255,255,0.04);
+  --tag-border: rgba(255,255,255,0.15);
+  --tag-text: rgba(255,255,255,0.55);
+
+  /* Slide timing */
+  --slide-seconds: 8;
+}
+/* ═══════════════════════════════════════════════════════════ */
+
+body {
+  font-family: 'Outfit', sans-serif;
+  background: var(--bg);
+  width: 1920px; height: 1080px;
+  overflow: hidden; color: var(--text);
+}
+
+/* ═══ BORDER FRAME ═══ */
+.frame {
+  position: absolute; inset: 0;
+  border: var(--border-width) solid var(--border-color);
+  z-index: 200; pointer-events: none;
+}
+.frame::after {
+  content: ''; position: absolute; inset: 5px;
+  border: 1px solid var(--border-inner);
+}
+
+/* ═══ HEADER ═══ */
+.header {
+  position: absolute; top: 6px; left: 6px; right: 6px;
+  height: 64px;
+  background: linear-gradient(90deg, var(--brand-dark) 0%, var(--brand) 100%);
+  display: flex; align-items: center;
+  padding: 0 40px; z-index: 100;
+}
+.logo-area { display: flex; align-items: center; gap: 12px; }
+.logo-leaf {
+  width: 40px; height: 40px; border-radius: 10px;
+  background: rgba(255,255,255,0.1);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 22px;
+}
+.logo-name { font-size: 24px; font-weight: 800; color: #fff; }
+.logo-sub { font-size: 10px; color: var(--brand-light); letter-spacing: 1.5px; text-transform: uppercase; }
+.header-right { margin-left: auto; }
+.cat-badge {
+  padding: 6px 20px; border-radius: 6px;
+  font-size: 12px; font-weight: 700;
+  letter-spacing: 2px; text-transform: uppercase; color: #fff;
+  transition: background .5s;
+}
+
+/* ═══ MAIN CONTENT ═══ */
+.content {
+  position: absolute;
+  top: 74px; left: 6px; right: 6px; bottom: 96px;
+  display: grid;
+  grid-template-columns: 50% 50%;
+}
+
+/* ── LEFT PANEL: Centered product info ── */
+.info-panel {
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  padding: 40px 50px;
+  text-align: center;
+  position: relative;
+}
+
+.p-brand {
+  font-size: 15px; font-weight: 700;
+  letter-spacing: 4px; text-transform: uppercase;
+  margin-bottom: 16px;
+  transition: color .5s;
+}
+
+.p-name {
+  font-family: 'Playfair Display', serif;
+  font-size: 56px; font-weight: 600;
+  font-style: italic;
+  line-height: 1.1; color: #fff;
+  margin-bottom: 6px;
+}
+
+.p-size {
+  font-size: 20px; font-weight: 300;
+  color: rgba(255,255,255,0.4);
+  margin-bottom: 24px;
+  letter-spacing: 2px;
+}
+
+/* Divider line */
+.divider {
+  width: 200px; height: 1px;
+  background: rgba(255,255,255,0.12);
+  margin-bottom: 24px;
+}
+
+.p-subtitle {
+  font-size: 17px; font-weight: 300;
+  color: rgba(255,255,255,0.5);
+  max-width: 480px;
+  line-height: 1.55;
+  margin-bottom: 32px;
+  font-style: italic;
+}
+
+/* ══ PRICE ROW ══ */
+.price-row {
+  display: flex; align-items: center; gap: 18px;
+  margin-bottom: 28px;
+}
+
+/* Big green price block — matches the ChatGPT mockup style */
+.price-box {
+  display: inline-flex; align-items: baseline;
+  padding: 16px 36px 16px 30px;
+  border-radius: 12px;
+  background: var(--price-bg);
+  position: relative; overflow: hidden;
+  min-width: 180px;
+}
+.price-box::after {
+  content: ''; position: absolute;
+  top: -50%; left: -50%; width: 200%; height: 200%;
+  background: linear-gradient(105deg, transparent 40%, rgba(255,255,255,0.15) 45%, rgba(255,255,255,0.25) 50%, rgba(255,255,255,0.15) 55%, transparent 60%);
+  transform: translateX(-100%);
+}
+.price-box.shimmer::after {
+  animation: shimmer 1s ease .8s 1 forwards;
+}
+@keyframes shimmer {
+  to { transform: translateX(100%); }
+}
+
+.price-dollar { font-size: 36px; font-weight: 800; color: #fff; margin-right: 2px; }
+.price-whole { font-size: 68px; font-weight: 900; color: #fff; line-height: 1; letter-spacing: -1px; }
+.price-cents { font-size: 32px; font-weight: 800; color: rgba(255,255,255,0.85); align-self: flex-start; margin-top: 8px; margin-left: 1px; }
+
+/* Was price — larger, beside the SAVE badge */
+.was-price {
+  font-size: 22px; font-weight: 400;
+  color: rgba(255,255,255,0.4);
+  text-decoration: line-through;
+  text-decoration-color: #D64045;
+  text-decoration-thickness: 2px;
+  letter-spacing: .5px;
+}
+
+/* SAVE badge — bold red, larger like the mockup */
+.save-badge {
+  display: inline-flex; align-items: center; justify-content: center;
+  padding: 12px 22px;
+  background: var(--save-bg);
+  border-radius: 10px;
+  font-size: 20px; font-weight: 900;
+  color: #fff; letter-spacing: .5px;
+  line-height: 1.2;
+}
+
+/* Ask in store */
+.price-ask {
+  font-size: 22px; font-weight: 500; color: #A8D5BA;
+  padding: 14px 30px;
+  border: 2px solid #2D6A4F;
+  border-radius: 10px;
+  letter-spacing: 1px;
+}
+
+/* Tags — rounded pills with border like the mockup */
+.tags { display: flex; gap: 10px; flex-wrap: wrap; justify-content: center; }
+.tag {
+  padding: 9px 22px; border-radius: 20px;
+  background: var(--tag-bg);
+  border: 1px solid var(--tag-border);
+  font-size: 14px; font-weight: 500;
+  color: var(--tag-text);
+  letter-spacing: .3px;
+}
+
+/* ── RIGHT PANEL: Product image — glossy premium look ── */
+.img-panel {
+  display: flex; align-items: center; justify-content: center;
+  position: relative;
+}
+
+/* Ambient glow behind product — soft coloured light */
+.img-glow {
+  position: absolute;
+  width: 400px; height: 400px;
+  border-radius: 50%;
+  background: rgba(45,106,79,0.1);
+  filter: blur(80px);
+  transition: background .6s;
+}
+
+/* Floor reflection — the lit surface beneath the product */
+.img-floor {
+  position: absolute;
+  bottom: 60px;
+  width: 320px; height: 80px;
+  border-radius: 50%;
+  background: radial-gradient(ellipse, rgba(255,255,255,0.04) 0%, transparent 70%);
+  z-index: 0;
+}
+
+/* Product image — glossy shadow stack */
+.img-panel img {
+  position: relative; z-index: 1;
+  max-width: 78%; max-height: 76%;
+  object-fit: contain;
+  /* Multi-layer shadow for that premium lit effect:
+     1. Close tight shadow (product contact)
+     2. Medium spread shadow (depth)
+     3. Wide ambient shadow (atmosphere)
+     4. Bottom highlight glow */
+  filter:
+    drop-shadow(0 4px 8px rgba(0,0,0,0.4))
+    drop-shadow(0 16px 32px rgba(0,0,0,0.35))
+    drop-shadow(0 32px 64px rgba(0,0,0,0.25))
+    drop-shadow(0 -4px 20px rgba(255,255,255,0.02));
+}
+
+/* Subtle glossy highlight overlay on the image */
+.img-panel img::after {
+  content: '';
+  position: absolute; inset: 0;
+  background: linear-gradient(170deg, rgba(255,255,255,0.08) 0%, transparent 40%);
+  pointer-events: none;
+}
+
+.img-placeholder { font-size: 120px; opacity: .04; }
+
+/* ═══ FOOTER — Bold scrolling ticker ═══ */
+.footer {
+  position: absolute; bottom: 6px; left: 6px; right: 6px;
+  height: 86px;
+  display: flex; flex-direction: column;
+  z-index: 100; overflow: hidden;
+}
+
+.footer-top {
+  height: 30px;
+  background: linear-gradient(90deg, var(--brand-dark) 0%, var(--brand) 100%);
+  display: flex; align-items: center;
+  padding: 0 28px;
+}
+.ft-logo { font-size: 12px; font-weight: 700; color: #fff; margin-right: 6px; }
+.ft-sub { font-size: 9px; color: var(--brand-bright); letter-spacing: 1px; text-transform: uppercase; }
+.footer-dots { margin-left: auto; display: flex; gap: 5px; margin-right: 14px; }
+.dot { width: 6px; height: 6px; border-radius: 50%; background: rgba(255,255,255,0.15); transition: all .3s; }
+.dot.on { width: 22px; border-radius: 3px; background: rgba(255,255,255,0.65); }
+.ft-clock { font-size: 14px; font-weight: 600; color: rgba(255,255,255,0.4); font-variant-numeric: tabular-nums; }
+
+.footer-band {
+  flex: 1;
+  background: var(--ticker-bg);
+  display: flex; align-items: center;
+  overflow: hidden;
+}
+
+.ticker-track {
+  display: flex; align-items: center; gap: 56px;
+  white-space: nowrap;
+  animation: tickScroll 50s linear infinite;
+}
+@keyframes tickScroll { 0%{transform:translateX(0)} 100%{transform:translateX(-50%)} }
+
+.tick-item {
+  display: flex; align-items: center; gap: 14px;
+  font-size: 19px; font-weight: 400; color: var(--brand-light);
+}
+.tick-item .hi { color: #fff; font-weight: 700; }
+.tick-dot { width: 5px; height: 5px; border-radius: 50%; background: var(--brand-bright); flex-shrink: 0; }
+
+/* Progress bar */
+.progress {
+  position: absolute; top: 6px; left: 6px; right: 6px;
+  height: 3px; background: var(--brand-bright); width: 0; z-index: 300;
+}
+.progress.run { transition: width var(--dur) linear; width: 100%; }
+
+/* ═══ ANIMATIONS ═══ */
+
+/* Ambient glow pulse — the light behind the product slowly breathes */
+@keyframes glowPulse {
+  0%, 100% { opacity: .6; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.08); }
+}
+.img-glow { animation: glowPulse 4s ease-in-out infinite; }
+
+.anim { opacity: 0; transform: translateY(30px); }
+.anim.in { opacity: 1; transform: translateY(0); }
+.anim.out { opacity: 0; transform: translateY(-20px); }
+.anim.d1 { transition: opacity .55s cubic-bezier(.16,1,.3,1) 0s, transform .55s cubic-bezier(.16,1,.3,1) 0s; }
+.anim.d2 { transition: opacity .6s cubic-bezier(.16,1,.3,1) .06s, transform .6s cubic-bezier(.16,1,.3,1) .06s; }
+.anim.d3 { transition: opacity .6s cubic-bezier(.16,1,.3,1) .12s, transform .6s cubic-bezier(.16,1,.3,1) .12s; }
+.anim.d4 { transition: opacity .6s cubic-bezier(.16,1,.3,1) .18s, transform .6s cubic-bezier(.16,1,.3,1) .18s; }
+.anim.d5 { transition: opacity .65s cubic-bezier(.16,1,.3,1) .24s, transform .65s cubic-bezier(.16,1,.3,1) .24s; }
+.anim.d6 { transition: opacity .65s cubic-bezier(.16,1,.3,1) .30s, transform .65s cubic-bezier(.16,1,.3,1) .30s; }
+.anim.d7 { transition: opacity .7s cubic-bezier(.16,1,.3,1) .36s, transform .7s cubic-bezier(.16,1,.3,1) .36s; }
+.anim.out.d1,.anim.out.d2,.anim.out.d3,.anim.out.d4,.anim.out.d5,.anim.out.d6,.anim.out.d7 {
+  transition: opacity .2s ease-in, transform .2s ease-in;
+}
+
+.img-anim { opacity: 0; transform: scale(.82) translateX(60px); }
+.img-anim.in { opacity:1; transform: scale(1) translateX(0); transition: opacity .9s cubic-bezier(.16,1,.3,1) .1s, transform .9s cubic-bezier(.16,1,.3,1) .1s; }
+.img-anim.out { opacity:0; transform: scale(.9) translateX(-40px); transition: opacity .2s ease-in, transform .2s ease-in; }
+
+@keyframes priceSlam {
+  0% { transform: scale(0) rotate(-6deg); opacity:0; }
+  45% { transform: scale(1.15) rotate(2deg); opacity:1; }
+  65% { transform: scale(.95) rotate(-1deg); }
+  82% { transform: scale(1.04); }
+  100% { transform: scale(1) rotate(0); opacity:1; }
+}
+.price-slam { animation: priceSlam .6s cubic-bezier(.16,1,.3,1) .32s both; }
+
+@keyframes badgePunch {
+  0% { transform: scale(0) rotate(-20deg); opacity:0; }
+  50% { transform: scale(1.25) rotate(4deg); opacity:1; }
+  75% { transform: scale(.9) rotate(-2deg); }
+  100% { transform: scale(1) rotate(0); opacity:1; }
+}
+.badge-punch { animation: badgePunch .5s cubic-bezier(.16,1,.3,1) .65s both; }
+
+@keyframes wasFade { from { opacity:0; } to { opacity:1; } }
+.was-fade { animation: wasFade .3s ease .5s both; }
+
+@media (max-width:1920px) { body { transform-origin: top left; transform: scale(calc(100vw / 1920)); } }
+
+.loading { position:absolute; inset:0; display:flex; flex-direction:column; align-items:center; justify-content:center; background:#0A0A0A; z-index:999; transition: opacity .5s; }
+.loading.hidden { opacity:0; pointer-events:none; }
+.loading-spinner { width:36px; height:36px; border:3px solid #1B4332; border-top-color:#52B788; border-radius:50%; animation: spin .7s linear infinite; margin-bottom:10px; }
+@keyframes spin { to{transform:rotate(360deg)} }
+.loading-text { font-size:13px; color:#555; }
+</style>
+</head>
+<body>
+
+<div class="loading" id="loader"><div class="loading-spinner"></div><div class="loading-text">Loading...</div></div>
+<div class="frame"></div>
+<div class="progress" id="progress"></div>
+
+<div class="header">
+  <div class="logo-area">
+    <div class="logo-leaf">🌿</div>
+    <div><div class="logo-name">WholeLife</div><div class="logo-sub">Pharmacy &amp; Healthfoods</div></div>
+  </div>
+  <div class="header-right"><div class="cat-badge" id="catBadge">FEATURED</div></div>
+</div>
+
+<div class="content">
+  <div class="info-panel">
+    <div class="p-brand anim d1" id="pBrand"></div>
+    <div class="p-name anim d2" id="pName"></div>
+    <div class="p-size anim d3" id="pSize"></div>
+    <div class="divider anim d4"></div>
+    <div class="p-subtitle anim d5" id="pSub"></div>
+    <div class="price-row anim d6" id="priceRow"></div>
+    <div class="tags anim d7" id="pTags"></div>
+  </div>
+  <div class="img-panel">
+    <div class="img-glow" id="imgGlow"></div>
+    <div class="img-floor"></div>
+    <div id="imgBox" class="img-anim"></div>
+  </div>
+</div>
+
+<div class="footer">
+  <div class="footer-top">
+    <span class="ft-logo">WholeLife</span>
+    <span class="ft-sub">Pharmacy &amp; Healthfoods</span>
+    <div class="footer-dots" id="dots"></div>
+    <div class="ft-clock" id="clock"></div>
+  </div>
+  <div class="footer-band">
+    <div class="ticker-track" id="ticker"></div>
+  </div>
+</div>
+
+<script>
+const PRODUCTS_JSON_URL = 'https://raw.githubusercontent.com/chandranravindran/wholelife-signage/main/products.json';
+const SLIDE_SECONDS = 8;
+
+const TICKER = [
+  {t:'Healthy living every day',h:'Ask our pharmacist'},
+  {t:'Free shipping on orders over',h:'$69'},
+  {t:'Book your',h:'Flu Vaccination',a:'in-store today'},
+  {t:'Shop online',h:'wholelife.com.au'},
+  {t:'Click & Collect',h:'Order online, pick up in store'},
+  {t:'Pharmacist consultations',h:'available daily'},
+  {t:"Australia's largest range of",h:'natural & organic products'},
+  {t:'Join',h:'Vibe',a:'— our loyalty rewards program'},
+];
+
+const CATS = {
+  immunity:{bg:'#2D6A4F',glow:'rgba(45,106,79,0.12)'},
+  digestive:{bg:'#7C3AED',glow:'rgba(124,58,237,0.1)'},
+  energy:{bg:'#C2410C',glow:'rgba(194,65,12,0.1)'},
+  stress:{bg:'#4338CA',glow:'rgba(67,56,202,0.1)'},
+  beauty:{bg:'#BE185D',glow:'rgba(190,24,93,0.1)'},
+  vitamins:{bg:'#B45309',glow:'rgba(180,83,9,0.1)'},
+  baby:{bg:'#059669',glow:'rgba(5,150,105,0.1)'},
+  pharmacy:{bg:'#1D4ED8',glow:'rgba(29,78,216,0.1)'},
+};
+const DCAT = {bg:'#2D6A4F',glow:'rgba(45,106,79,0.1)'};
+
+let products=[],cur=0,tmr=null;
+
+async function boot(){
+  if(PRODUCTS_JSON_URL){try{const r=await fetch(PRODUCTS_JSON_URL+'?t='+Date.now());if(r.ok){const data=await r.json();if(Array.isArray(data)&&data.length){products=data.map(p=>({name:p.name||'',image:p.image||'',price:p.price||'',wasPrice:p.wasPrice||'',category:(p.category||'').toLowerCase().trim(),brand:p.brand||'',subtitle:p.subtitle||'',tags:p.tags||''}));}}}catch(e){}}
+  if(!products.length) products=demo();
+  products=products.filter(p=>p.name);
+  document.getElementById('loader').classList.add('hidden');
+  buildDots(); buildTicker();
+  if(products.length){show(0);tmr=setInterval(()=>show((cur+1)%products.length),SLIDE_SECONDS*1000);}
+}
+
+function parseCSV(csv){
+  const lines=csv.split('\n').map(l=>{const f=[];let c='',q=false;for(let i=0;i<l.length;i++){const ch=l[i];if(ch==='"'){q=!q;continue}if(ch===','&&!q){f.push(c.trim());c='';continue}c+=ch}f.push(c.trim());return f});
+  if(lines.length<2)return[];
+  const h=lines[0].map(x=>x.toLowerCase().replace(/[^a-z0-9 ]/g,' ').trim());
+  let ci={name:h.findIndex(x=>x.includes('name')),image:h.findIndex(x=>x.includes('image')),price:h.findIndex(x=>x==='price'||x.startsWith('price')),wasPrice:h.findIndex(x=>x.includes('was')),category:h.findIndex(x=>x.includes('categ')),brand:h.findIndex(x=>x.includes('brand')),subtitle:h.findIndex(x=>x.includes('subtitle')||x.includes('benefit')),tags:h.findIndex(x=>x.includes('tag')),status:h.findIndex(x=>x.includes('status'))};
+  if(Object.values(ci).filter(v=>v>=0).length<4) ci={name:1,image:2,price:3,wasPrice:4,category:5,brand:6,subtitle:7,desc:8,tags:9,status:10};
+  const res=[];
+  for(let i=1;i<lines.length;i++){const r=lines[i];if(!r||r.length<2)continue;const g=x=>x>=0&&x<r.length?r[x]:'';if(g(ci.status).toLowerCase()==='hidden')continue;const nm=g(ci.name);if(!nm)continue;
+  let img=g(ci.image);if(!img||!img.startsWith('http')){for(let c=0;c<r.length;c++){if(r[c]&&/^https?:\/\/.+\.(jpg|jpeg|png|gif|webp)/i.test(r[c])){img=r[c];break}if(r[c]&&/b-cdn\.net/i.test(r[c])){img=r[c];break}}}
+  res.push({name:nm,image:img,price:g(ci.price).replace(/[$,]/g,''),wasPrice:g(ci.wasPrice).replace(/[$,]/g,''),category:g(ci.category).toLowerCase().trim(),brand:g(ci.brand),subtitle:g(ci.subtitle),tags:g(ci.tags)})}
+  return res;
+}
+
+function show(idx){
+  const p=products[idx],cat=CATS[p.category]||DCAT;
+  document.querySelectorAll('.anim').forEach(e=>{e.classList.remove('in');e.classList.add('out')});
+  const ib=document.getElementById('imgBox');ib.classList.remove('in');ib.classList.add('out');
+
+  setTimeout(()=>{
+    document.getElementById('catBadge').textContent=(p.category||'featured').toUpperCase();
+    document.getElementById('catBadge').style.background=cat.bg;
+    document.getElementById('imgGlow').style.background=cat.glow;
+    document.getElementById('pBrand').textContent=(p.brand||'').toUpperCase();
+    document.getElementById('pBrand').style.color=cat.bg==='#2D6A4F'?'#52B788':cat.bg;
+
+    // Split name into product name + size (e.g. "Men's Multi" + "60 Tablets")
+    const nameParts=p.name.match(/^(.+?)\s+(\d+\s*(?:tablets?|capsules?|caps?|g|mg|ml|serves?|softgels?).*)$/i);
+    if(nameParts){
+      document.getElementById('pName').textContent=nameParts[1];
+      document.getElementById('pSize').textContent=nameParts[2];
+    } else {
+      document.getElementById('pName').textContent=p.name;
+      document.getElementById('pSize').textContent='';
+    }
+
+    document.getElementById('pSub').textContent=p.subtitle||'';
+
+    // Price
+    const pr=document.getElementById('priceRow');pr.innerHTML='';
+    const pn=parseFloat(p.price),wn=parseFloat(p.wasPrice);
+    if(pn>0){
+      const d=Math.floor(pn),c=Math.round((pn-d)*100).toString().padStart(2,'0');
+      const box=document.createElement('div');box.className='price-box shimmer';box.style.background=cat.bg;
+      box.innerHTML='<span class="price-dollar">$</span><span class="price-whole">'+d+'</span><span class="price-cents">.'+c+'</span>';
+      pr.appendChild(box);
+      if(wn>0&&wn>pn){
+        // WAS price text
+        const w=document.createElement('span');w.className='was-price was-fade';w.textContent='WAS $'+wn.toFixed(2);
+        pr.appendChild(w);
+        // SAVE badge
+        const saved=Math.round(wn-pn);
+        const s=document.createElement('span');s.className='save-badge badge-punch';
+        s.innerHTML='SAVE<br>$'+saved+'!';
+        pr.appendChild(s);
+      }
+    } else {
+      const a=document.createElement('div');a.className='price-ask';a.textContent='Ask in store';pr.appendChild(a);
+    }
+
+    // Tags
+    const tg=document.getElementById('pTags');tg.innerHTML='';
+    if(p.tags){p.tags.split(',').map(t=>t.trim()).filter(Boolean).slice(0,4).forEach(t=>{const s=document.createElement('span');s.className='tag';s.textContent=t;tg.appendChild(s)})}
+
+    // Image
+    ib.innerHTML='';
+    if(p.image&&p.image.startsWith('http')){
+      const img=document.createElement('img');img.src=p.image;img.alt=p.name;img.referrerPolicy='no-referrer';
+      img.onerror=function(){const i2=document.createElement('img');i2.src=this.src;i2.onerror=function(){this.parentElement.innerHTML='<div class="img-placeholder">📦</div>'};this.parentElement.innerHTML='';this.parentElement.appendChild(i2)};
+      ib.appendChild(img);
+    } else { ib.innerHTML='<div class="img-placeholder">📦</div>'; }
+
+    document.querySelectorAll('.dot').forEach((d,i)=>d.classList.toggle('on',i===idx));
+
+    // ENTER
+    document.querySelectorAll('.anim').forEach(e=>e.classList.remove('out'));ib.classList.remove('out');
+    requestAnimationFrame(()=>{
+      document.querySelectorAll('.anim').forEach(e=>e.classList.add('in'));ib.classList.add('in');
+      const box=pr.querySelector('.price-box,.price-ask');if(box)box.classList.add('price-slam');
+    });
+
+    resetProg();setTimeout(startProg,40);
+  },260);
+  cur=idx;
+}
+
+function resetProg(){const b=document.getElementById('progress');b.classList.remove('run');b.style.width='0';b.style.transition='none'}
+function startProg(){const b=document.getElementById('progress');b.style.transition='width '+SLIDE_SECONDS+'s linear';requestAnimationFrame(()=>{b.classList.add('run');b.style.width='100%'})}
+function buildDots(){const el=document.getElementById('dots');el.innerHTML='';products.forEach((_,i)=>{const d=document.createElement('div');d.className='dot'+(i===0?' on':'');el.appendChild(d)})}
+
+function buildTicker(){
+  const t=document.getElementById('ticker');
+  [...TICKER,...TICKER].forEach(m=>{const s=document.createElement('span');s.className='tick-item';s.innerHTML='<span class="tick-dot"></span>'+m.t+' <span class="hi">'+m.h+'</span>'+(m.a?' '+m.a:'');t.appendChild(s)});
+}
+
+function tickClock(){const n=new Date();document.getElementById('clock').textContent=n.getHours().toString().padStart(2,'0')+':'+n.getMinutes().toString().padStart(2,'0')}
+setInterval(tickClock,10000);tickClock();
+
+if(PRODUCTS_JSON_URL){setInterval(async()=>{try{const r=await fetch(PRODUCTS_JSON_URL+'?t='+Date.now());if(r.ok){const data=await r.json();if(Array.isArray(data)&&data.length){const np=data.map(p=>({name:p.name||'',image:p.image||'',price:p.price||'',wasPrice:p.wasPrice||'',category:(p.category||'').toLowerCase().trim(),brand:p.brand||'',subtitle:p.subtitle||'',tags:p.tags||''})).filter(p=>p.name);if(np.length){products=np;buildDots()}}}}catch(e){}},5*60*1000)}
+
+function demo(){return[
+  {name:"Herbs of Gold Men's Multi 60 Tablets",brand:'Herbs of Gold',price:'',wasPrice:'',category:'vitamins',subtitle:'For healthy, clear and blemish free skin.',tags:'Australian Made, Dairy Free, Gluten Free, Vegan',image:'https://wholelife.b-cdn.net/wp-content/uploads/2022/02/Mens-Multi-60-Tablets.jpg'},
+  {name:'BioActive+ Nausea Relief 20 Capsules',brand:'Buderim Ginger',price:'',wasPrice:'',category:'immunity',subtitle:'Ginger-based relief for nausea and motion sickness.',tags:'Australian Made, Gluten Free, Trending, Vegan',image:'https://wholelife.b-cdn.net/wp-content/uploads/2026/03/BioActive-Nausea-Relief-Capsules-20-Caps-1.jpg'},
+  {name:'Protein Water Raspberry 25 Serves',brand:'Muscle Nation',price:'',wasPrice:'',category:'energy',subtitle:'Refreshing raspberry protein water for post-workout recovery.',tags:'High Protein, Low Sugar',image:'https://wholelife.b-cdn.net/wp-content/uploads/2025/10/Protein-Water-Raspberry-25-Serves.jpg'},
+  {name:'Dehn Al Oudh Agarwood Candle 200g',brand:'Organic Goodness',price:'69.00',wasPrice:'',category:'pharmacy',subtitle:'Made from natural soy wax and essential oils. Burns up to 60 hours.',tags:'Natural, Soy Wax, Essential Oils',image:'https://wholelife.b-cdn.net/wp-content/uploads/2022/02/Dehn-Al-Oudh-Agarwood-Candle-200g.jpg'},
+  {name:'Saw Palmetto 50 Capsules',brand:"Caruso's",price:'29.95',wasPrice:'39.95',category:'vitamins',subtitle:'Supports prostate health and urinary tract function.',tags:'Dairy Free, Gluten Free, Herbal',image:'https://wholelife.b-cdn.net/wp-content/uploads/2022/02/Saw-Palmetto-50-Capsules.jpg'},
+]}
+
+boot();
+</script>
+</body>
+</html>
