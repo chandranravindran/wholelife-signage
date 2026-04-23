@@ -1,0 +1,80 @@
+{
+  "slides": [
+    {
+      "id": 1,
+      "type": "",
+      "url": "https://wholelife.com.au/product/saw-palmetto-50-capsules/",
+      "name": "Saw Palmetto 50 Capsules | WholeLife",
+      "image_url": "https://wholelife.b-cdn.net/wp-content/uploads/2023/03/Saw-Palmetto-50-Capsules-1.jpg",
+      "display_image": "https://raw.githubusercontent.com/chandranravindran/wholelife-signage/main/images/saw-palmetto-50-capsules-wholelife.png",
+      "price": "50.99",
+      "was_price": "",
+      "category": "",
+      "brand": "",
+      "subtitle": "",
+      "description": "",
+      "tags": "Dairy Free, Gluten Free",
+      "status": "active",
+      "order": 0,
+      "source": "wholelife",
+      "notes": "Fetched OK",
+      "updated_at": "2026-04-23T08:12:31.394129"
+    },
+    {
+      "id": 2,
+      "type": "",
+      "url": "https://wholelife.com.au/product/pee-less-60-tablets/",
+      "name": "PEE LESS 60 Tablets | WholeLife",
+      "image_url": "https://wholelife.b-cdn.net/wp-content/uploads/2024/11/Pee-Less-60-Tablets.jpg",
+      "display_image": "https://raw.githubusercontent.com/chandranravindran/wholelife-signage/main/images/pee-less-60-tablets-wholelife.png",
+      "price": "41.99",
+      "was_price": "",
+      "category": "",
+      "brand": "",
+      "subtitle": "",
+      "description": "",
+      "tags": "",
+      "status": "active",
+      "order": 0,
+      "source": "wholelife",
+      "notes": "Fetched OK",
+      "updated_at": "2026-04-23T08:14:38.306501"
+    }
+  ],
+  "settings": {
+    "github_repo": "chandranravindran/wholelife-signage",
+    "slide_seconds": 7,
+    "theme": "light",
+    "store_name": "WholeLife",
+    "store_tagline": "Pharmacy & Healthfoods",
+    "ticker_messages": [
+      {
+        "text": "Healthy living every day",
+        "highlight": "Ask our pharmacist"
+      },
+      {
+        "text": "Free shipping on orders over",
+        "highlight": "$69"
+      },
+      {
+        "text": "Book your",
+        "highlight": "Flu Vaccination",
+        "after": "in-store today"
+      },
+      {
+        "text": "Shop online",
+        "highlight": "wholelife.com.au"
+      },
+      {
+        "text": "Click & Collect",
+        "highlight": "Order online, pick up in store"
+      },
+      {
+        "text": "Join",
+        "highlight": "Vibe",
+        "after": "— our loyalty rewards program"
+      }
+    ],
+    "promo_every_n": 3
+  }
+}
