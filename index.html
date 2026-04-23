@@ -32,7 +32,7 @@ body{font-family:'Outfit',sans-serif;background:#ffffff;width:1920px;height:1080
 .price-ask{font-size:24px;font-weight:600;color:var(--wl-purple);padding:16px 36px;border:2px solid var(--wl-purple);border-radius:10px}
 .tags{display:flex;gap:12px;flex-wrap:wrap;justify-content:center}
 .tag{padding:10px 28px;border-radius:8px;font-size:15px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:#fff;background:var(--wl-purple);box-shadow:0 2px 8px rgba(98,69,124,0.25)}
-.img-panel{display:flex;align-items:center;justify-content:center;position:relative;background:var(--wl-light);border-left:1px solid var(--wl-border)}
+.img-panel{display:flex;align-items:center;justify-content:center;position:relative;background:#ffffff;}
 .img-panel::after{content:'';position:absolute;bottom:48px;left:50%;transform:translateX(-50%);width:340px;height:60px;border-radius:50%;background:radial-gradient(ellipse,rgba(0,0,0,0.08) 0%,transparent 70%)}
 .img-panel img{position:relative;z-index:1;max-width:76%;max-height:78%;object-fit:contain;filter:drop-shadow(0 4px 8px rgba(0,0,0,0.12)) drop-shadow(0 16px 32px rgba(0,0,0,0.10)) drop-shadow(0 32px 56px rgba(0,0,0,0.07))}
 .img-placeholder{font-size:140px;opacity:.06}
@@ -119,29 +119,26 @@ body{font-family:'Outfit',sans-serif;background:#ffffff;width:1920px;height:1080
 </div>
 
 <script>
-// ── CONFIG — update this if you change your GitHub repo ──
+// ── CONFIG ──
 const GITHUB_RAW = "https://raw.githubusercontent.com/chandranravindran/wholelife-signage/main/products.json";
-const REFRESH_MS = 5 * 60 * 1000; // reload data every 5 minutes
+const REFRESH_MS = 5 * 60 * 1000;
+const PROMO_IMG_SEC = 15;
 
 let slides = [];
 let settings = {};
 let cur = 0;
 let slideTimer = null;
 
-// ── Load data from GitHub ──
 async function loadData() {
   try {
-    const r = await fetch(GITHUB_RAW + "?t=" + Date.now()); // bust cache
+    const r = await fetch(GITHUB_RAW + "?t=" + Date.now());
     const d = await r.json();
     if (d.slides && d.slides.length) {
       slides = d.slides;
       settings = d.settings || {};
       rebuildDots();
-      console.log("✅ Loaded", slides.length, "slides from GitHub");
     }
-  } catch(e) {
-    console.warn("Could not load products.json:", e);
-  }
+  } catch(e) { console.warn("Could not load products.json:", e); }
 }
 
 function rebuildDots() {
@@ -154,12 +151,32 @@ function rebuildDots() {
   });
 }
 
-// ── Show slide ──
+function setFullscreen(on) {
+  const hdr = document.querySelector('.header');
+  const ftr = document.querySelector('.footer');
+  const prog = document.getElementById('progress');
+  const ps = document.getElementById('promoSlide');
+  if (on) {
+    hdr.style.display='none'; ftr.style.display='none'; prog.style.display='none';
+    ps.style.top='0'; ps.style.bottom='0';
+  } else {
+    hdr.style.display='flex'; ftr.style.display='flex'; prog.style.display='block';
+    ps.style.top='80px'; ps.style.bottom='80px';
+  }
+}
+
+function scheduleNext(sec) {
+  if (slideTimer) clearTimeout(slideTimer);
+  slideTimer = setTimeout(() => next(), sec * 1000);
+}
+
 function show(idx) {
   if (!slides.length) return;
   const p = slides[idx];
-  const isPromo = p.type === 'promo';
   const SLIDE_SEC = settings.slide_seconds || 8;
+  const isPromo = p.type === 'promo';
+  const isVideo = isPromo && p.video_type === 'mp4' && p.youtube_url;
+  const isYT = isPromo && p.youtube_url && !isVideo;
   const prodSlide = document.getElementById('productSlide');
   const promoSlide = document.getElementById('promoSlide');
 
@@ -169,31 +186,40 @@ function show(idx) {
   document.getElementById('promoBox').classList.remove('in');
   document.getElementById('promoBox').classList.add('out');
 
-  setTimeout(()=>{
-    if(isPromo){
-      prodSlide.style.display='none';promoSlide.style.display='flex';
-      document.getElementById('catBadge').textContent='PROMOTION';
-      document.getElementById('catBadge').style.background='#DD6D09';
-      const pb=document.getElementById('promoBox');pb.innerHTML='';
-      if(p.youtube_url && p.video_type==='mp4'){
-        const vid=document.createElement('video');
-        vid.src=p.youtube_url;
-        vid.style.cssText='width:100%;height:100%;object-fit:contain;background:#000;';
-        vid.autoplay=true;vid.loop=true;vid.muted=false;vid.playsInline=true;
-        vid.controls=false;
+  setTimeout(() => {
+    if (isPromo) {
+      prodSlide.style.display='none'; promoSlide.style.display='flex';
+      const pb = document.getElementById('promoBox'); pb.innerHTML = '';
+      if (isVideo) {
+        setFullscreen(true);
+        const vid = document.createElement('video');
+        vid.src = p.youtube_url;
+        vid.style.cssText = 'width:100%;height:100%;object-fit:cover;background:#000;';
+        vid.autoplay=true; vid.loop=false; vid.muted=false; vid.playsInline=true; vid.controls=false;
         pb.appendChild(vid);
-        vid.play().catch(()=>{vid.muted=true;vid.play();});
-      } else if(p.youtube_url){
-        const iframe=document.createElement('iframe');
-        iframe.src=p.youtube_url;
-        iframe.style.cssText='width:100%;height:100%;border:none;';
-        iframe.allow='autoplay;fullscreen';
-        iframe.allowFullscreen=true;
+        vid.play().catch(() => { vid.muted=true; vid.play(); });
+        vid.addEventListener('ended', () => next());
+        scheduleNext(180);
+      } else if (isYT) {
+        setFullscreen(true);
+        const iframe = document.createElement('iframe');
+        iframe.src = p.youtube_url;
+        iframe.style.cssText = 'width:100%;height:100%;border:none;';
+        iframe.allow = 'autoplay;fullscreen'; iframe.allowFullscreen = true;
         pb.appendChild(iframe);
-      } else if(p.display_image||p.image_url){const img=document.createElement('img');img.src=p.display_image||p.image_url;img.alt=p.name;pb.appendChild(img);}
-      pb.classList.remove('out');requestAnimationFrame(()=>pb.classList.add('in'));
+        scheduleNext(180);
+      } else {
+        setFullscreen(false);
+        document.getElementById('catBadge').textContent = 'PROMOTION';
+        document.getElementById('catBadge').style.background = '#DD6D09';
+        if (p.display_image||p.image_url) { const img=document.createElement('img');img.src=p.display_image||p.image_url;img.alt=p.name;pb.appendChild(img); }
+        resetProg(PROMO_IMG_SEC); setTimeout(() => startProg(PROMO_IMG_SEC), 40);
+        scheduleNext(PROMO_IMG_SEC);
+      }
+      pb.classList.remove('out'); requestAnimationFrame(() => pb.classList.add('in'));
     } else {
-      prodSlide.style.display='grid';promoSlide.style.display='none';
+      setFullscreen(false);
+      prodSlide.style.display='grid'; promoSlide.style.display='none';
       const energyCats=['energy','promo'];
       document.getElementById('catBadge').textContent=(p.category||'FEATURED').toUpperCase();
       document.getElementById('catBadge').style.background=energyCats.includes(p.category)?'#DD6D09':'#62457C';
@@ -227,21 +253,18 @@ function show(idx) {
       document.querySelectorAll('.anim').forEach(e=>e.classList.remove('out'));
       ib.classList.remove('out');
       requestAnimationFrame(()=>{document.querySelectorAll('.anim').forEach(e=>e.classList.add('in'));ib.classList.add('in');});
+      resetProg(SLIDE_SEC); setTimeout(()=>startProg(SLIDE_SEC),40);
+      scheduleNext(SLIDE_SEC);
     }
     document.querySelectorAll('.dot').forEach((d,i)=>d.classList.toggle('on',i===idx));
-    resetProg(SLIDE_SEC);setTimeout(()=>startProg(SLIDE_SEC),40);
-  },240);
-  cur=idx;
+  }, 240);
+  cur = idx;
 }
 
-function next(){
-  if(!slides.length) return;
-  show((cur+1)%slides.length);
-}
-function resetProg(sec){const b=document.getElementById('progress');b.classList.remove('run');b.style.width='0';b.style.transition='none';b.style.setProperty('--dur',sec+'s');}
+function next() { show((cur+1) % slides.length); }
+function resetProg(sec){const b=document.getElementById('progress');b.classList.remove('run');b.style.width='0';b.style.transition='none';b.style.setProperty('--dur',(sec||8)+'s');}
 function startProg(sec){const b=document.getElementById('progress');b.style.transition='width '+sec+'s linear';requestAnimationFrame(()=>{b.classList.add('run');b.style.width='100%';});}
 
-// ── Ticker ──
 function buildTicker(msgs) {
   const tk=document.getElementById('ticker');
   tk.innerHTML='';
@@ -259,25 +282,15 @@ function buildTicker(msgs) {
   });
 }
 
-// ── Clock ──
 function tickClock(){const n=new Date();document.getElementById('clock').textContent=n.getHours().toString().padStart(2,'0')+':'+n.getMinutes().toString().padStart(2,'0');}
 setInterval(tickClock,10000);tickClock();
 
-// ── Boot ──
 async function boot() {
   await loadData();
   buildTicker(settings.ticker_messages);
   rebuildDots();
-  if(slides.length){
-    show(0);
-    const sec = settings.slide_seconds || 8;
-    slideTimer = setInterval(next, sec * 1000);
-  }
-  // Reload data every 5 minutes
-  setInterval(async()=>{
-    await loadData();
-    buildTicker(settings.ticker_messages);
-  }, REFRESH_MS);
+  if(slides.length){ show(0); }
+  setInterval(async()=>{ await loadData(); buildTicker(settings.ticker_messages); }, REFRESH_MS);
 }
 
 boot();
