@@ -39,6 +39,26 @@
       "source": "wholelife",
       "notes": "Fetched OK",
       "updated_at": "2026-04-23T14:45:57.837173"
+    },
+    {
+      "id": 3,
+      "type": "",
+      "url": "https://wholelife.com.au/product/bioactive-nausea-relief-capsules-20-capsules/",
+      "name": "BioActive+ Nausea Relief Capsules 20 Capsules | WholeLife",
+      "image_url": "https://wholelife.b-cdn.net/wp-content/uploads/2026/03/BioActive-Nausea-Relief-Capsules-20-Caps-1.jpg",
+      "display_image": "https://wholelife.b-cdn.net/wp-content/uploads/2026/03/BioActive-Nausea-Relief-Capsules-20-Caps-1.jpg",
+      "price": "15.99",
+      "was_price": "19.99",
+      "category": "immunity",
+      "brand": "",
+      "subtitle": "Buderim BioActive+ Nausea Relief Capsules help relieve nausea and support digestive comfort.",
+      "description": "",
+      "tags": "Australian Made, Gluten Free, Trending, Vegan",
+      "status": "active",
+      "order": 0,
+      "source": "wholelife",
+      "notes": "Fetched OK",
+      "updated_at": "2026-04-23T14:47:19.735572"
     }
   ],
   "settings": {
