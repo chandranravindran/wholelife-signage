@@ -61,6 +61,26 @@
       "updated_at": "2026-04-23T14:47:19.735572"
     },
     {
+      "id": 5,
+      "type": "promo",
+      "name": "flu campaign",
+      "image_url": "",
+      "display_image": "",
+      "youtube_url": "https://player.vimeo.com/video/1185761876?autoplay=1&loop=1&title=0&byline=0&portrait=0&badge=0",
+      "price": "",
+      "was_price": "",
+      "category": "promo",
+      "brand": "",
+      "subtitle": "",
+      "description": "",
+      "tags": "",
+      "status": "active",
+      "order": 1,
+      "source": "promo",
+      "notes": "Vimeo video: https://vimeo.com/1185761876?share=copy&fl=sv&fe=ci",
+      "updated_at": "2026-04-23T15:46:49.065415"
+    },
+    {
       "id": 4,
       "type": "",
       "url": "https://wholelife.com.au/product/bio-bubble-probiotic-500ml/",
