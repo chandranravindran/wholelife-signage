@@ -1,24 +1,24 @@
 {
   "slides": [
     {
-      "id": 4,
-      "type": "",
-      "url": "https://wholelife.com.au/product/bio-bubble-probiotic-500ml/",
-      "name": "Bio-Bubble Probiotic 500ml | WholeLife",
-      "image_url": "https://wholelife.b-cdn.net/wp-content/uploads/2022/02/Pic309.0.jpg",
-      "display_image": "https://raw.githubusercontent.com/chandranravindran/wholelife-signage/main/images/bio-bubble-probiotic-500ml-wholelife.png",
-      "price": "18.99",
+      "id": 6,
+      "type": "product",
+      "url": "https://wholelife.com.au/product/clear-skin-60-tablets/",
+      "name": "HERBS OF GOLD Clear Skin 60 Tablets | WholeLife",
+      "image_url": "https://wholelife.b-cdn.net/wp-content/uploads/2022/06/Clear-Skin-60-Tabs.jpg",
+      "display_image": "https://raw.githubusercontent.com/chandranravindran/wholelife-signage/main/images/herbs-of-gold-clear-skin-60-tablets-wholelife.png",
+      "price": "41.49",
       "was_price": "",
-      "category": "digestive",
+      "category": "beauty",
       "brand": "",
-      "subtitle": "Made from Antioxidant Rich Foods & Probiotics, May Benefit Digestion & Gut Health",
+      "subtitle": "",
       "description": "",
-      "tags": "Vegetarian",
+      "tags": "Dairy Free, Gluten Free, Vegan",
       "status": "active",
       "order": 0,
       "source": "wholelife",
       "notes": "Fetched OK",
-      "updated_at": "2026-04-23T15:35:31.429808"
+      "updated_at": "2026-04-28T20:20:47.449902"
     }
   ],
   "settings": {
