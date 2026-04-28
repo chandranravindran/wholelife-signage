@@ -39,12 +39,32 @@
       "source": "wholelife",
       "notes": "Fetched OK",
       "updated_at": "2026-04-28T20:38:03.485337"
+    },
+    {
+      "id": 8,
+      "type": "product",
+      "url": "https://wholelife.com.au/product/collagen-restore-300g/",
+      "name": "Collagen Restore 270g | WholeLife",
+      "image_url": "https://wholelife.b-cdn.net/wp-content/uploads/2025/04/Collagen-Restore-270g.jpg",
+      "display_image": "https://wholelife.b-cdn.net/wp-content/uploads/2025/04/Collagen-Restore-270g.jpg",
+      "price": "66.99",
+      "was_price": "",
+      "category": "beauty",
+      "brand": "",
+      "subtitle": "",
+      "description": "",
+      "tags": "Gluten Free, Internet Favourites",
+      "status": "active",
+      "order": 0,
+      "source": "wholelife",
+      "notes": "Fetched OK",
+      "updated_at": "2026-04-29T09:40:24.896187"
     }
   ],
   "settings": {
     "github_repo": "chandranravindran/wholelife-signage",
-    "slide_seconds": 7,
-    "theme": "light",
+    "slide_seconds": 6,
+    "theme": "dark",
     "store_name": "WholeLife",
     "store_tagline": "Pharmacy & Healthfoods",
     "ticker_messages": [
@@ -75,6 +95,6 @@
         "after": "— our loyalty rewards program"
       }
     ],
-    "promo_every_n": 3
+    "promo_every_n": 1
   }
 }
