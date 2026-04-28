@@ -1,26 +1,6 @@
 {
   "slides": [
     {
-      "id": 1,
-      "type": "",
-      "url": "https://wholelife.com.au/product/saw-palmetto-50-capsules/",
-      "name": "Saw Palmetto 50 Capsules | WholeLife",
-      "image_url": "https://wholelife.b-cdn.net/wp-content/uploads/2023/03/Saw-Palmetto-50-Capsules-1.jpg",
-      "display_image": "https://raw.githubusercontent.com/chandranravindran/wholelife-signage/main/images/saw-palmetto-50-capsules-wholelife.png",
-      "price": "50.99",
-      "was_price": "",
-      "category": "",
-      "brand": "",
-      "subtitle": "",
-      "description": "",
-      "tags": "Dairy Free, Gluten Free",
-      "status": "active",
-      "order": 0,
-      "source": "wholelife",
-      "notes": "Fetched OK",
-      "updated_at": "2026-04-23T08:12:31.394129"
-    },
-    {
       "id": 2,
       "type": "",
       "url": "https://wholelife.com.au/product/pee-less-60-tablets/",
@@ -61,6 +41,26 @@
       "updated_at": "2026-04-23T14:47:19.735572"
     },
     {
+      "id": 4,
+      "type": "",
+      "url": "https://wholelife.com.au/product/bio-bubble-probiotic-500ml/",
+      "name": "Bio-Bubble Probiotic 500ml | WholeLife",
+      "image_url": "https://wholelife.b-cdn.net/wp-content/uploads/2022/02/Pic309.0.jpg",
+      "display_image": "https://raw.githubusercontent.com/chandranravindran/wholelife-signage/main/images/bio-bubble-probiotic-500ml-wholelife.png",
+      "price": "18.99",
+      "was_price": "",
+      "category": "digestive",
+      "brand": "",
+      "subtitle": "Made from Antioxidant Rich Foods & Probiotics, May Benefit Digestion & Gut Health",
+      "description": "",
+      "tags": "Vegetarian",
+      "status": "active",
+      "order": 0,
+      "source": "wholelife",
+      "notes": "Fetched OK",
+      "updated_at": "2026-04-23T15:35:31.429808"
+    },
+    {
       "id": 5,
       "type": "promo",
       "name": "flu promotion",
@@ -80,26 +80,6 @@
       "notes": "MP4 video: flu-promotion.mp4",
       "updated_at": "2026-04-23T15:58:19.921151",
       "video_type": "mp4"
-    },
-    {
-      "id": 4,
-      "type": "",
-      "url": "https://wholelife.com.au/product/bio-bubble-probiotic-500ml/",
-      "name": "Bio-Bubble Probiotic 500ml | WholeLife",
-      "image_url": "https://wholelife.b-cdn.net/wp-content/uploads/2022/02/Pic309.0.jpg",
-      "display_image": "https://raw.githubusercontent.com/chandranravindran/wholelife-signage/main/images/bio-bubble-probiotic-500ml-wholelife.png",
-      "price": "18.99",
-      "was_price": "",
-      "category": "digestive",
-      "brand": "",
-      "subtitle": "Made from Antioxidant Rich Foods & Probiotics, May Benefit Digestion & Gut Health",
-      "description": "",
-      "tags": "Vegetarian",
-      "status": "active",
-      "order": 0,
-      "source": "wholelife",
-      "notes": "Fetched OK",
-      "updated_at": "2026-04-23T15:35:31.429808"
     },
     {
       "id": 6,
