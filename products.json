@@ -39,6 +39,26 @@
       "source": "wholelife",
       "notes": "Fetched OK",
       "updated_at": "2026-04-28T13:52:46.034542"
+    },
+    {
+      "id": 3,
+      "type": "",
+      "url": "https://wholelife.com.au/product/marine-collagen-221g/",
+      "name": "Marine Collagen 221g | WholeLife",
+      "image_url": "https://wholelife.b-cdn.net/wp-content/uploads/2022/09/Marine-Collagen-221g.jpg",
+      "display_image": "https://wholelife.b-cdn.net/wp-content/uploads/2022/09/Marine-Collagen-221g.jpg",
+      "price": "54.99",
+      "was_price": "",
+      "category": "beauty",
+      "brand": "",
+      "subtitle": "",
+      "description": "",
+      "tags": "All Things Collagen, Get Your Health Back On Track, New In Wellness",
+      "status": "active",
+      "order": 0,
+      "source": "wholelife",
+      "notes": "Fetched OK",
+      "updated_at": "2026-04-28T13:54:19.948454"
     }
   ],
   "settings": {
