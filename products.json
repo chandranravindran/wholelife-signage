@@ -59,6 +59,26 @@
       "source": "wholelife",
       "notes": "Fetched OK",
       "updated_at": "2026-04-28T13:54:55.959276"
+    },
+    {
+      "id": 4,
+      "type": "",
+      "url": "https://wholelife.com.au/product/saw-palmetto-50-capsules/",
+      "name": "Saw Palmetto 50 Capsules | WholeLife",
+      "image_url": "https://wholelife.b-cdn.net/wp-content/uploads/2023/03/Saw-Palmetto-50-Capsules-1.jpg",
+      "display_image": "https://wholelife.b-cdn.net/wp-content/uploads/2023/03/Saw-Palmetto-50-Capsules-1.jpg",
+      "price": "50.99",
+      "was_price": "",
+      "category": "",
+      "brand": "",
+      "subtitle": "",
+      "description": "",
+      "tags": "Dairy Free, Gluten Free",
+      "status": "active",
+      "order": 0,
+      "source": "wholelife",
+      "notes": "Fetched OK",
+      "updated_at": "2026-04-28T13:56:14.369221"
     }
   ],
   "settings": {
