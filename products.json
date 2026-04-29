@@ -44,7 +44,7 @@
       "id": 8,
       "type": "product",
       "url": "https://wholelife.com.au/product/organic-zinc-80-tablets/",
-      "name": "Organic Zinc 80 Tablets | WholeLife",
+      "name": "Organic Zinc 80 Tablets ",
       "image_url": "https://wholelife.b-cdn.net/wp-content/uploads/2023/03/Organic-Zinc-80-Tablets.jpg",
       "display_image": "https://raw.githubusercontent.com/chandranravindran/wholelife-signage/main/images/organic-zinc-80-tablets-wholelife.png",
       "price": "16.99",
@@ -58,7 +58,7 @@
       "order": 0,
       "source": "wholelife",
       "notes": "Fetched OK",
-      "updated_at": "2026-04-29T10:25:35.170881"
+      "updated_at": "2026-04-29T10:28:51.281917"
     }
   ],
   "settings": {
