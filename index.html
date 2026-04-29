@@ -115,18 +115,19 @@
 
   /* ── Promo slide ── */
   .promo-slide {
-    width: 100%; height: 100%;
+    position: absolute; inset: 0;
     display: flex; align-items: center; justify-content: center;
     background: #000; padding-bottom: 72px;
   }
   .promo-slide img {
-    max-width: 100%; max-height: calc(100vh - 72px); object-fit: contain;
+    width: 100%; height: 100%; object-fit: contain;
   }
   .promo-slide iframe {
-    width: 100%; height: calc(100vh - 72px); border: none;
+    position: absolute; top: 0; left: 0;
+    width: 100%; height: calc(100% - 72px); border: none;
   }
   .promo-slide video {
-    max-width: 100%; max-height: calc(100vh - 72px); object-fit: contain;
+    width: 100%; height: calc(100% - 72px); object-fit: cover;
   }
 
   /* ── Transition screen ── */
@@ -326,7 +327,7 @@ function buildProductSlide(p, idx) {
 function buildPromoSlide(p) {
   if (p.youtube_url) {
     if (p.video_type === 'mp4') {
-      return `<div class="promo-slide"><video src="${esc(p.youtube_url)}" autoplay muted loop playsinline></video></div>`;
+      return `<div class="promo-slide"><video src="${esc(p.youtube_url)}" autoplay muted playsinline></video></div>`;
     }
     return `<div class="promo-slide"><iframe src="${esc(p.youtube_url)}" allow="autoplay; encrypted-media" allowfullscreen></iframe></div>`;
   }
@@ -347,6 +348,7 @@ function renderSlides() {
     div.className = 'slide';
     div.dataset.index = idx;
     div.dataset.type  = p.type || 'product';
+    div.dataset.duration = p.duration || 60;
 
     if (p.type === 'promo') {
       div.innerHTML = buildPromoSlide(p);
@@ -420,14 +422,21 @@ function showSlide(idx, useTransition) {
 }
 
 function scheduleNext(slideEl) {
-  const video = slideEl ? slideEl.querySelector('video') : null;
+  const video  = slideEl ? slideEl.querySelector('video') : null;
+  const iframe = slideEl ? slideEl.querySelector('iframe') : null;
+
   if (video) {
     video.currentTime = 0;
     video.play().catch(() => {});
     let done = false;
     const advance = () => { if (!done) { done = true; nextSlide(); } };
     video.onended = advance;
-    setTimeout(advance, 120000); // 2 min safety fallback
+    setTimeout(advance, 120000);
+    return;
+  }
+  if (iframe) {
+    const duration = parseInt(slideEl.dataset.duration || '60', 10);
+    setTimeout(nextSlide, duration * 1000);
     return;
   }
   const isPromo = slideEl && slideEl.dataset.type === 'promo';
@@ -449,10 +458,10 @@ function nextSlide() {
   if (!allSlides.length) return;
   const prev = current;
   current = (current + 1) % allSlides.length;
-  const prevIsVideo = !!allSlides[prev].querySelector('video');
-  const nextIsVideo = !!allSlides[current].querySelector('video');
-  showSlide(current, prevIsVideo || nextIsVideo);
-  setTimeout(() => scheduleNext(allSlides[current]), prevIsVideo || nextIsVideo ? 2000 : 800);
+  const prevHasVideo = !!(allSlides[prev].querySelector('video') || allSlides[prev].querySelector('iframe'));
+  const nextHasVideo = !!(allSlides[current].querySelector('video') || allSlides[current].querySelector('iframe'));
+  showSlide(current, prevHasVideo || nextHasVideo);
+  setTimeout(() => scheduleNext(allSlides[current]), prevHasVideo || nextHasVideo ? 2000 : 800);
 }
 
 // ── Refresh data without interrupting show ──
