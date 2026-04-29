@@ -21,26 +21,6 @@
       "updated_at": "2026-04-29T13:06:57.953306"
     },
     {
-      "id": 3,
-      "type": "promo",
-      "name": "sample",
-      "image_url": "",
-      "display_image": "",
-      "youtube_url": "https://www.youtube.com/embed/PxZg4SfIURg?autoplay=1&mute=1&controls=0&loop=1&playlist=PxZg4SfIURg&rel=0",
-      "price": "",
-      "was_price": "",
-      "category": "promo",
-      "brand": "",
-      "subtitle": "",
-      "description": "",
-      "tags": "",
-      "status": "active",
-      "order": 999,
-      "source": "promo",
-      "notes": "YouTube video: https://www.youtube.com/watch?v=PxZg4SfIURg",
-      "updated_at": "2026-04-29T13:09:24.316445"
-    },
-    {
       "id": 2,
       "type": "product",
       "url": "https://wholelife.com.au/product/mens-multi-60-tablets/",
@@ -59,26 +39,6 @@
       "source": "wholelife",
       "notes": "Fetched OK",
       "updated_at": "2026-04-29T13:07:36.059574"
-    },
-    {
-      "id": 3,
-      "type": "promo",
-      "name": "sample",
-      "image_url": "",
-      "display_image": "",
-      "youtube_url": "https://www.youtube.com/embed/PxZg4SfIURg?autoplay=1&mute=1&controls=0&loop=1&playlist=PxZg4SfIURg&rel=0",
-      "price": "",
-      "was_price": "",
-      "category": "promo",
-      "brand": "",
-      "subtitle": "",
-      "description": "",
-      "tags": "",
-      "status": "active",
-      "order": 999,
-      "source": "promo",
-      "notes": "YouTube video: https://www.youtube.com/watch?v=PxZg4SfIURg",
-      "updated_at": "2026-04-29T13:09:24.316445"
     }
   ],
   "settings": {
@@ -115,6 +75,6 @@
         "after": "— our loyalty rewards program"
       }
     ],
-    "promo_every_n": 1
+    "promo_every_n": 3
   }
 }
