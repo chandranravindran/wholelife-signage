@@ -4,7 +4,7 @@
       "id": 1,
       "type": "product",
       "url": "https://wholelife.com.au/product/saw-palmetto-50-capsules/",
-      "name": "Saw Palmetto 50 Capsules | WholeLife",
+      "name": "Saw Palmetto 50 Capsules ",
       "image_url": "https://wholelife.b-cdn.net/wp-content/uploads/2023/03/Saw-Palmetto-50-Capsules-1.jpg",
       "display_image": "https://raw.githubusercontent.com/chandranravindran/wholelife-signage/main/images/saw-palmetto-50-capsules-wholelife.png",
       "price": "50.99",
@@ -18,7 +18,7 @@
       "order": 0,
       "source": "wholelife",
       "notes": "Fetched OK",
-      "updated_at": "2026-04-29T11:53:38.658191"
+      "updated_at": "2026-04-29T11:54:48.866289"
     },
     {
       "id": 2,
