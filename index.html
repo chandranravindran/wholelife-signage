@@ -3,364 +3,496 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>WholeLife Digital Signage</title>
-<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<title>WholeLife Display</title>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700;800;900&display=swap" rel="stylesheet">
 <style>
-*{margin:0;padding:0;box-sizing:border-box}
-:root{--purple:#62457C;--orange:#DD6D09;--green:#B7B800;--red:#e03e3e;}
-html,body{width:100vw;height:100vh;overflow:hidden;background:#fff;font-family:'Nunito',sans-serif;}
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body {
+    width: 100%; height: 100%; overflow: hidden;
+    background: #fff; font-family: 'Nunito', sans-serif;
+  }
 
-/* PROGRESS */
-#progress{position:fixed;top:0;left:0;height:4px;width:0;background:linear-gradient(90deg,var(--purple),var(--orange),var(--green));z-index:999;}
+  /* ── Slide wrapper ── */
+  .slide-container { width: 100vw; height: 100vh; position: relative; }
 
-/* PRODUCT SLIDE */
-#productSlide{position:fixed;inset:3vh 0 12vh 0;display:grid;grid-template-columns:50% 50%;}
+  .slide {
+    position: absolute; inset: 0;
+    display: none; opacity: 0;
+    transition: opacity .7s ease;
+    z-index: 1;
+  }
+  .slide.active  { display: flex; }
+  .slide.visible { opacity: 1; z-index: 2; }
 
-/* LEFT PANEL */
-#infoPanel{display:flex;flex-direction:column;justify-content:center;padding:0 5% 0 7%;background:#fff;overflow:hidden;}
+  /* ── Product slide ── */
+  .product-slide {
+    display: flex; flex-direction: row;
+    background: #ffffff; width: 100%; height: 100%;
+    padding-bottom: 72px;
+  }
 
-#pCat{font-size:clamp(13px,1.4vw,20px);font-weight:800;letter-spacing:4px;text-transform:uppercase;color:var(--orange);margin-bottom:1.4vh;}
-#pBrand{font-size:clamp(14px,1.5vw,22px);font-weight:700;letter-spacing:3px;text-transform:uppercase;color:#bbb;margin-bottom:1vh;}
-#pNameBold{font-size:clamp(42px,6.5vw,96px);font-weight:900;line-height:0.95;color:var(--purple);}
-#pNameLight{font-size:clamp(42px,6.5vw,96px);font-weight:300;line-height:0.95;color:var(--purple);margin-bottom:2vh;}
-#pSize{font-size:clamp(13px,1.3vw,18px);font-weight:500;color:#ccc;letter-spacing:2px;margin-bottom:1.5vh;}
-.rule{width:52px;height:4px;border-radius:2px;background:linear-gradient(90deg,var(--orange),var(--green));margin-bottom:2vh;}
-#pSub{font-size:clamp(13px,1.4vw,20px);font-weight:500;color:#aaa;line-height:1.85;max-width:520px;margin-bottom:2.5vh;}
+  .left-panel {
+    flex: 0 0 54%;
+    padding: 48px 40px 48px 80px;
+    display: flex; flex-direction: column; justify-content: center;
+    overflow: hidden;
+  }
 
-/* PRICE */
-.price-row{display:flex;align-items:flex-start;gap:4px;margin-bottom:1vh;}
-.price-dollar{font-size:clamp(26px,3vw,44px);font-weight:900;color:var(--orange);margin-top:1.2vw;line-height:1;}
-.price-whole{font-size:clamp(80px,12vw,160px);font-weight:900;color:var(--orange);line-height:1;letter-spacing:-4px;}
-.price-cents{font-size:clamp(26px,3vw,44px);font-weight:900;color:var(--orange);margin-top:1.2vw;line-height:1;}
-.price-ask{font-size:clamp(24px,2.8vw,40px);font-weight:700;color:var(--purple);padding:1.2vh 2.5vw;border:3px solid var(--purple);border-radius:10px;display:inline-block;}
+  .meta-zone { margin-bottom: 14px; min-height: 66px; }
+  .cat-label {
+    font-size: 17px; font-weight: 700; letter-spacing: 3px;
+    text-transform: uppercase; color: #B7B800; margin-bottom: 6px; min-height: 24px;
+  }
+  .brand-label {
+    font-size: 26px; font-weight: 700; color: #62457C;
+  }
 
-/* WAS/SAVE */
-.was-save{display:flex;align-items:center;gap:14px;margin-bottom:2.5vh;}
-.was{font-size:clamp(13px,1.3vw,18px);color:#ccc;font-weight:700;text-decoration:line-through;text-decoration-color:var(--red);}
-.save-badge{padding:6px 16px;background:var(--red);border-radius:5px;font-size:clamp(12px,1.2vw,16px);font-weight:900;color:#fff;}
+  .name-zone { margin-bottom: 20px; min-height: 80px; }
+  .product-name {
+    font-size: clamp(34px, 4.8vw, 68px);
+    line-height: 1.1; color: #1a1a1a;
+    display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+  .product-name .light { font-weight: 300; }
+  .product-name .bold  { font-weight: 900; }
 
-/* TAGS */
-#pTags{display:flex;gap:10px;flex-wrap:wrap;}
-.tag{padding:8px 20px;border-radius:5px;font-size:clamp(11px,1.1vw,15px);font-weight:800;letter-spacing:1px;text-transform:uppercase;}
-.tag-purple{background:#f4f0f9;color:var(--purple);}
-.tag-green{background:#f5f6e8;color:#5e5e00;}
-.tag-orange{background:#fdf3ec;color:#a04800;}
+  .desc-zone { margin-bottom: 16px; }
+  .subtitle {
+    font-size: 22px; color: #555; line-height: 1.4; font-weight: 400;
+    display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+  .description {
+    font-size: 18px; color: #777; line-height: 1.5; margin-top: 6px;
+    display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
 
-/* RIGHT PANEL */
-#imgPanel{position:relative;background:#fff;display:flex;align-items:center;justify-content:center;overflow:hidden;}
-#imgPanel::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 52% 48%,rgba(98,69,124,0.07) 0%,transparent 68%);z-index:0;}
-#wm{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;opacity:0.04;pointer-events:none;z-index:0;}
-#wm img{width:76%;height:76%;object-fit:contain;}
-#imgBox{position:relative;z-index:2;width:74%;height:86%;display:flex;align-items:center;justify-content:center;}
-#imgBox img{max-width:100%;max-height:100%;object-fit:contain;filter:drop-shadow(0 8px 32px rgba(98,69,124,0.18)) drop-shadow(0 24px 64px rgba(98,69,124,0.10)) drop-shadow(0 2px 6px rgba(0,0,0,0.06));}
-.placeholder{font-size:clamp(80px,12vw,160px);opacity:0.06;}
-#imgPanel::after{content:'';position:absolute;bottom:3%;left:50%;transform:translateX(-50%);width:36%;height:4%;background:radial-gradient(ellipse,rgba(98,69,124,0.14) 0%,transparent 70%);border-radius:50%;z-index:1;}
+  .price-zone { margin-bottom: 20px; min-height: 80px; }
+  .was-row { margin-bottom: 4px; }
+  .price-now {
+    font-size: clamp(60px, 8vw, 100px); font-weight: 900;
+    color: #DD6D09; line-height: 1;
+  }
+  .price-now .dollar { font-size: .52em; vertical-align: super; }
+  .price-was {
+    font-size: 26px; color: #bbb; text-decoration: line-through; margin-right: 10px;
+  }
+  .price-save {
+    display: inline-block; background: #DD6D09; color: #fff;
+    font-size: 17px; font-weight: 700; padding: 4px 14px; border-radius: 20px;
+  }
 
-/* PROMO SLIDE */
-#promoSlide{position:fixed;inset:3vh 0 12vh 0;display:none;align-items:center;justify-content:center;background:#000;z-index:10;}
-#promoBox{width:100%;height:100%;display:flex;align-items:center;justify-content:center;}
-#promoBox img{width:100%;height:100%;object-fit:contain;}
+  .tags { display: flex; gap: 8px; flex-wrap: wrap; }
+  .tag {
+    background: #f0ecf7; color: #62457C;
+    padding: 6px 16px; border-radius: 20px;
+    font-size: 16px; font-weight: 700;
+  }
 
-/* TRANSITION SCREEN */
-#transitionScreen{position:fixed;inset:0;background:#1e0e35;display:none;flex-direction:column;align-items:center;justify-content:center;z-index:20;}
-.tr-top-bar{position:absolute;top:0;left:0;right:0;height:4px;background:linear-gradient(90deg,var(--purple),var(--orange),var(--green));}
-.tr-bot-bar{position:absolute;bottom:0;left:0;right:0;height:4px;background:linear-gradient(90deg,var(--green),var(--orange),var(--purple));}
-.tr-glow{position:absolute;width:50%;height:50%;border-radius:50%;background:radial-gradient(ellipse,rgba(98,69,124,0.65) 0%,transparent 70%);}
-.tr-wm{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;opacity:0.05;pointer-events:none;}
-.tr-wm img{width:80%;height:80%;object-fit:contain;}
-.tr-content{position:relative;z-index:2;display:flex;flex-direction:column;align-items:center;gap:20px;}
-.tr-logo{height:clamp(50px,8vh,90px);object-fit:contain;filter:brightness(0) invert(1);opacity:0.85;}
-.tr-bar-wrap{width:180px;height:3px;background:rgba(255,255,255,0.1);border-radius:2px;overflow:hidden;}
-.tr-bar{height:100%;background:linear-gradient(90deg,var(--orange),var(--green));border-radius:2px;animation:trBarAnim 1.5s ease-in-out infinite;}
-@keyframes trBarAnim{0%{width:10%;margin-left:0}50%{width:50%;margin-left:25%}100%{width:10%;margin-left:90%}}
+  /* Right panel — fixed 46%, image always centred */
+  .right-panel {
+    flex: 0 0 46%;
+    display: flex; align-items: center; justify-content: center;
+    padding: 48px 48px 48px 24px;
+    position: relative; overflow: hidden;
+  }
+  .right-panel::before {
+    content: '';
+    position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%);
+    width: 80%; height: 80%;
+    background: radial-gradient(ellipse, rgba(98,69,124,.06) 0%, transparent 68%);
+    border-radius: 50%;
+  }
+  .product-image {
+    max-width: 90%; max-height: calc(100vh - 200px);
+    width: auto; height: auto;
+    object-fit: contain; position: relative; z-index: 1;
+    filter: drop-shadow(0 20px 44px rgba(98,69,124,.13));
+  }
+  .watermark { display: none; }
 
-/* FOOTER TICKER */
-#footer{position:fixed;bottom:0;left:0;right:0;height:12vh;background:var(--purple);display:flex;flex-direction:column;z-index:50;overflow:hidden;}
-#footerTop{height:42%;background:var(--purple);display:flex;align-items:center;padding:0 2.5%;border-bottom:1px solid rgba(255,255,255,0.12);}
-#footerLogo{height:clamp(18px,3.2vh,32px);object-fit:contain;filter:brightness(0) invert(1);opacity:0.85;}
-#footerStoreName{margin-left:14px;font-size:clamp(10px,1.2vh,15px);font-weight:900;color:rgba(255,255,255,0.7);letter-spacing:1.5px;text-transform:uppercase;white-space:nowrap;}
-#footerStoreName span{color:var(--green);}
-#footerClock{margin-left:auto;font-size:clamp(12px,1.4vh,18px);font-weight:800;color:rgba(255,255,255,0.6);font-variant-numeric:tabular-nums;letter-spacing:1px;}
+  /* ── Promo slide ── */
+  .promo-slide {
+    width: 100%; height: 100%;
+    display: flex; align-items: center; justify-content: center;
+    background: #000; padding-bottom: 72px;
+  }
+  .promo-slide img {
+    max-width: 100%; max-height: calc(100vh - 72px); object-fit: contain;
+  }
+  .promo-slide iframe {
+    width: 100%; height: calc(100vh - 72px); border: none;
+  }
+  .promo-slide video {
+    max-width: 100%; max-height: calc(100vh - 72px); object-fit: contain;
+  }
 
-#tickerBand{flex:1;background:rgba(0,0,0,0.15);display:flex;align-items:center;overflow:hidden;}
-#tickerTrack{display:flex;align-items:center;white-space:nowrap;animation:tickScroll 55s linear infinite;}
-@keyframes tickScroll{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
-.tick-item{display:inline-flex;align-items:center;gap:16px;padding:0 40px;font-size:clamp(16px,2vh,26px);font-weight:500;color:rgba(255,255,255,0.7);}
-.tick-item .hi{color:#fff;font-weight:800;}
-.tick-item .tgreen{color:var(--green);font-weight:700;}
-.tick-item .torange{color:var(--orange);font-weight:700;}
-.tick-dot{width:6px;height:6px;border-radius:50%;background:var(--orange);flex-shrink:0;}
+  /* ── Transition screen ── */
+  .transition-slide {
+    background: #62457C;
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center; gap: 28px;
+    position: absolute; inset: 0;
+  }
+  .transition-slide .brand-text {
+    color: #fff; font-size: 48px; font-weight: 900; letter-spacing: 1px;
+  }
+  .transition-slide .brand-sub {
+    color: rgba(255,255,255,.6); font-size: 20px; font-weight: 400;
+    letter-spacing: 2px; text-transform: uppercase; margin-top: -18px;
+  }
+  .loading-bar-wrap {
+    width: 280px; height: 4px; background: rgba(255,255,255,.2);
+    border-radius: 2px; overflow: hidden;
+  }
+  .loading-bar {
+    height: 100%; width: 0%; background: #fff; border-radius: 2px;
+    animation: loadBar 1.2s ease-in-out forwards;
+  }
+  @keyframes loadBar { to { width: 100%; } }
 
-/* ANIMATIONS */
-.anim{opacity:0;transform:translateY(28px);}
-.anim.in{opacity:1;transform:translateY(0);}
-.anim.out{opacity:0;transform:translateY(-16px);}
-.d1{transition:opacity .5s  cubic-bezier(.16,1,.3,1) 0s,   transform .5s  cubic-bezier(.16,1,.3,1) 0s}
-.d2{transition:opacity .55s cubic-bezier(.16,1,.3,1) .06s, transform .55s cubic-bezier(.16,1,.3,1) .06s}
-.d3{transition:opacity .55s cubic-bezier(.16,1,.3,1) .12s, transform .55s cubic-bezier(.16,1,.3,1) .12s}
-.d4{transition:opacity .55s cubic-bezier(.16,1,.3,1) .18s, transform .55s cubic-bezier(.16,1,.3,1) .18s}
-.d5{transition:opacity .6s  cubic-bezier(.16,1,.3,1) .22s, transform .6s  cubic-bezier(.16,1,.3,1) .22s}
-.d6{transition:opacity .6s  cubic-bezier(.16,1,.3,1) .28s, transform .6s  cubic-bezier(.16,1,.3,1) .28s}
-.d7{transition:opacity .65s cubic-bezier(.16,1,.3,1) .34s, transform .65s cubic-bezier(.16,1,.3,1) .34s}
-.anim.out.d1,.anim.out.d2,.anim.out.d3,.anim.out.d4,.anim.out.d5,.anim.out.d6,.anim.out.d7{transition:opacity .18s ease-in,transform .18s ease-in;}
-.img-anim{opacity:0;transform:scale(.88) translateX(40px);}
-.img-anim.in{opacity:1;transform:scale(1) translateX(0);transition:opacity .85s cubic-bezier(.16,1,.3,1) .1s,transform .85s cubic-bezier(.16,1,.3,1) .1s;}
-.img-anim.out{opacity:0;transform:scale(.93) translateX(-24px);transition:opacity .18s ease-in,transform .18s ease-in;}
+  /* ── Ticker ── */
+  .ticker-footer {
+    position: fixed; bottom: 0; left: 0; right: 0;
+    height: 72px; background: #62457C;
+    display: flex; align-items: center; overflow: hidden; z-index: 100;
+  }
+  .ticker-brand {
+    flex: 0 0 auto; padding: 0 28px;
+    display: flex; align-items: center; gap: 14px;
+    border-right: 1px solid rgba(255,255,255,.2); height: 100%;
+  }
+  .ticker-brand img { display: none; }
+  .ticker-brand .store-name { font-size: 20px; font-weight: 900; color: #fff; white-space: nowrap; letter-spacing: .5px; }
+  .ticker-brand .store-tag  { font-size: 13px; color: rgba(255,255,255,.65); white-space: nowrap; text-transform: uppercase; letter-spacing: 1px; }
+  .ticker-scroll-wrap { flex: 1; overflow: hidden; height: 100%; display: flex; align-items: center; }
+  .ticker-track {
+    display: flex; align-items: center;
+    white-space: nowrap;
+    animation: tickerMove 30s linear infinite;
+  }
+  .ticker-item {
+    display: inline-flex; align-items: center; gap: 6px;
+    padding: 0 32px; font-size: 20px; color: rgba(255,255,255,.85); font-weight: 600;
+  }
+  .ticker-item .hi { color: #fff; font-weight: 800; }
+  .ticker-sep {
+    display: inline-block; width: 5px; height: 5px;
+    background: rgba(255,255,255,.4); border-radius: 50%;
+  }
+  @keyframes tickerMove { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
+  /* Loading overlay */
+  #loadOverlay {
+    position: fixed; inset: 0; background: #62457C;
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    gap: 24px; z-index: 999;
+  }
+  #loadOverlay img { height: 70px; filter: brightness(0) invert(1); }
+  #loadOverlay p { color: rgba(255,255,255,.7); font-size: 16px; }
 </style>
 </head>
 <body>
 
-<div id="progress"></div>
-
-<!-- PRODUCT SLIDE -->
-<div id="productSlide">
-  <div id="infoPanel">
-    <div id="pCat"       class="anim d1"></div>
-    <div id="pBrand"     class="anim d2"></div>
-    <div id="pNameBold"  class="anim d3"></div>
-    <div id="pNameLight" class="anim d3"></div>
-    <div id="pSize"      class="anim d4"></div>
-    <div class="rule     anim d4"></div>
-    <div id="pSub"       class="anim d5"></div>
-    <div id="priceRow"   class="anim d6"></div>
-    <div id="pTags"      class="anim d7"></div>
-  </div>
-  <div id="imgPanel">
-    <div id="wm"><img src="https://raw.githubusercontent.com/chandranravindran/wholelife-signage/main/images/wholelife-logo-wide.jpg" alt=""></div>
-    <div id="imgBox" class="img-anim"></div>
-  </div>
+<!-- Loading overlay shown until data is ready -->
+<div id="loadOverlay">
+  <img src="images/wholelife-logo-wide.jpg" alt="WholeLife" onerror="this.style.display='none'">
+  <p>Loading display…</p>
 </div>
 
-<!-- PROMO SLIDE -->
-<div id="promoSlide"><div id="promoBox"></div></div>
+<div class="slide-container" id="slideContainer"></div>
 
-<!-- TRANSITION SCREEN -->
-<div id="transitionScreen">
-  <div class="tr-top-bar"></div>
-  <div class="tr-bot-bar"></div>
-  <div class="tr-wm"><img src="https://raw.githubusercontent.com/chandranravindran/wholelife-signage/main/images/wholelife-logo-wide.jpg" alt=""></div>
-  <div class="tr-glow"></div>
-  <div class="tr-content">
-    <img class="tr-logo" src="https://raw.githubusercontent.com/chandranravindran/wholelife-signage/main/images/wholelife-logo-wide.jpg" alt="WholeLife">
-    <div class="tr-bar-wrap"><div class="tr-bar"></div></div>
+<div class="ticker-footer">
+  <div class="ticker-brand">
+    <img src="images/wholelife-logo-wide.jpg" alt="WholeLife" onerror="this.style.display='none'">
+    <div>
+      <div class="store-name" id="storeName">WholeLife</div>
+      <div class="store-tag"  id="storeTag">Pharmacy &amp; Healthfoods</div>
+    </div>
   </div>
-</div>
-
-<!-- FOOTER -->
-<div id="footer">
-  <div id="footerTop">
-    <img id="footerLogo" src="https://raw.githubusercontent.com/chandranravindran/wholelife-signage/main/images/wholelife-logo-wide.jpg" alt="WholeLife">
-    <div id="footerStoreName">WHOLELIFE <span>PHARMACY &amp; HEALTHFOODS</span></div>
-    <div id="footerClock"></div>
-  </div>
-  <div id="tickerBand">
-    <div id="tickerTrack"></div>
+  <div class="ticker-scroll-wrap">
+    <div class="ticker-track" id="tickerTrack"></div>
   </div>
 </div>
 
 <script>
-const GITHUB_RAW = 'https://raw.githubusercontent.com/chandranravindran/wholelife-signage/main/products.json';
-const REFRESH_MS = 5 * 60 * 1000;
-const PROMO_SEC  = 15;
+// ── Config ──
+const PRODUCTS_URL = 'products.json';
+const REFRESH_INTERVAL = 5 * 60 * 1000; // 5 minutes
 
-let slides = [], settings = {}, cur = 0, slideTimer = null;
+let slides = [];
+let settings = {};
+let current = 0;
+let slideTimer = null;
 
-// LOAD
+// ── Load data from GitHub ──
 async function loadData() {
   try {
-    const r = await fetch(GITHUB_RAW + '?t=' + Date.now());
-    const d = await r.json();
-    if (d.slides && d.slides.length) { slides = d.slides; settings = d.settings || {}; applySettings(); }
-  } catch(e) { console.warn('Load error:', e); }
+    const resp = await fetch(PRODUCTS_URL + '?_=' + Date.now());
+    if (!resp.ok) throw new Error('HTTP ' + resp.status);
+    const data = await resp.json();
+    slides = data.slides || [];
+    settings = data.settings || {};
+    return true;
+  } catch(e) {
+    console.error('Failed to load products.json:', e);
+    return false;
+  }
 }
 
-function applySettings() {
-  buildTicker(settings.ticker_messages);
-}
-
-// CLOCK
-function tickClock() {
-  const n = new Date();
-  document.getElementById('footerClock').textContent =
-    n.getHours().toString().padStart(2,'0') + ':' + n.getMinutes().toString().padStart(2,'0');
-}
-setInterval(tickClock, 10000); tickClock();
-
-// TICKER
-function buildTicker(msgs) {
-  const def = [
-    {text:'Healthy living every day',        highlight:'Ask our pharmacist'},
-    {text:"Australia's largest range of",    highlight:'health foods & organics'},
-    {text:'Get Well · Stay Well ·',          highlight:'Live Well · Be Well'},
-    {text:'Book your',                        highlight:'Flu Vaccination', after:'in-store today'},
-    {text:'Vitamins · Supplements ·',         highlight:'Natural Beauty · Organics'},
-    {text:'Vegan · Gluten Free ·',            highlight:'Dairy Free · Keto'},
-    {text:'Guaranteed',                       highlight:'best prices every day'},
-    {text:'Your local',                       highlight:'Pharmacy & Healthfoods', after:'store'},
+// ── Build ticker ──
+function buildTicker() {
+  const msgs = settings.ticker_messages || [
+    { text: 'Get Well · Stay Well · Live Well · Be Well' },
+    { text: "Australia's largest range of", highlight: 'health foods & organics' },
+    { text: 'Ask our', highlight: 'pharmacist', after: 'today' },
+    { text: 'Book your', highlight: 'Flu Vaccination', after: 'in-store' },
+    { text: '', highlight: 'Guaranteed best prices' },
+    { text: 'Vegan · Organic · Gluten Free · Natural' },
   ];
-  const list = (msgs && msgs.length) ? msgs : def;
+
+  document.getElementById('storeName').textContent = settings.store_name || 'WholeLife';
+  document.getElementById('storeTag').textContent  = (settings.store_tagline || 'Pharmacy & Healthfoods');
+
+  const items = msgs.map(m => {
+    let html = '<span class="ticker-item">';
+    if (m.text)      html += m.text + ' ';
+    if (m.highlight) html += '<span class="hi">' + m.highlight + '</span> ';
+    if (m.after)     html += m.after;
+    html += '</span><span class="ticker-sep"></span>';
+    return html;
+  });
   const track = document.getElementById('tickerTrack');
-  track.innerHTML = '';
-  // duplicate for seamless loop
-  [...list, ...list].forEach(m => {
-    const s = document.createElement('span');
-    s.className = 'tick-item';
-    s.innerHTML =
-      '<span class="tick-dot"></span>' +
-      (m.text || '') + ' ' +
-      '<span class="' + (m.hiClass || 'hi') + '">' + (m.highlight || '') + '</span>' +
-      (m.after ? ' ' + m.after : '');
-    track.appendChild(s);
-  });
+  track.innerHTML = items.join('') + items.join(''); // doubled for seamless loop
 }
 
-// PROGRESS
-function resetProg(sec) {
-  const b = document.getElementById('progress');
-  b.style.transition = 'none'; b.style.width = '0';
-}
-function startProg(sec) {
-  const b = document.getElementById('progress');
-  requestAnimationFrame(() => { b.style.transition = 'width ' + sec + 's linear'; b.style.width = '100%'; });
-}
-function scheduleNext(sec) {
-  if (slideTimer) clearTimeout(slideTimer);
-  slideTimer = setTimeout(() => next(), sec * 1000);
-}
+// ── Build product slide HTML ──
+function buildProductSlide(p, idx) {
+  const imgSrc = p.display_image || p.image_url || '';
+  const imgHtml = imgSrc
+    ? `<img src="${imgSrc}" class="product-image" alt="${esc(p.name)}" onerror="this.style.display='none'">`
+    : '';
 
-// SHOW
-function show(idx) {
-  if (!slides.length) return;
-  cur = idx;
-  const p = slides[idx];
-  const SLIDE_SEC = settings.slide_seconds || 10;
-  const isPromo = p.type === 'promo';
-  const isVideo = isPromo && p.video_type === 'mp4' && p.youtube_url;
-  const isYT    = isPromo && p.youtube_url && !isVideo;
+  const words = (p.name || '').split(' ');
+  const half  = Math.floor(words.length / 2);
+  const nameHtml = words.length > 1
+    ? `<span class="light">${esc(words.slice(0, half).join(' '))}</span><span class="bold">${esc(words.slice(half).join(' '))}</span>`
+    : `<span class="bold">${esc(p.name)}</span>`;
 
-  document.querySelectorAll('.anim').forEach(e => { e.classList.remove('in'); e.classList.add('out'); });
-  const ib = document.getElementById('imgBox');
-  ib.classList.remove('in'); ib.classList.add('out');
-
-  setTimeout(() => {
-    isPromo ? showPromo(p, isVideo, isYT, SLIDE_SEC) : showProduct(p, SLIDE_SEC);
-  }, 240);
-}
-
-function showProduct(p, SLIDE_SEC) {
-  document.getElementById('productSlide').style.display      = 'grid';
-  document.getElementById('promoSlide').style.display        = 'none';
-  document.getElementById('transitionScreen').style.display  = 'none';
-
-  document.getElementById('pCat').textContent   = (p.category || 'Featured').toUpperCase();
-  document.getElementById('pBrand').textContent = (p.brand || '').toUpperCase();
-
-  // split name bold / light
-  const name = p.name || '';
-  let bold = name, light = '', sizeStr = '';
-  const sizeRx = /(\d+\s*(?:tablets?|capsules?|caps?|softgels?|serves?|sachets?|g|mg|ml|l|kg)[\w\s\/]*)$/i;
-  const sizeM  = name.match(sizeRx);
-  if (sizeM) {
-    const base   = name.slice(0, sizeM.index).trim().split(' ');
-    sizeStr      = sizeM[1].trim();
-    const mid    = Math.ceil(base.length / 2);
-    bold  = base.slice(0, mid).join(' ');
-    light = base.slice(mid).join(' ');
-  } else {
-    const words = name.split(' ');
-    if (words.length >= 2) { const mid = Math.ceil(words.length / 2); bold = words.slice(0,mid).join(' '); light = words.slice(mid).join(' '); }
-  }
-  document.getElementById('pNameBold').textContent  = bold;
-  document.getElementById('pNameLight').textContent = light;
-  document.getElementById('pSize').textContent      = sizeStr;
-  document.getElementById('pSub').textContent       = p.subtitle || '';
-
-  // price
-  const priceEl = document.getElementById('priceRow');
-  priceEl.innerHTML = '';
-  const price = parseFloat(p.price), was = parseFloat(p.was_price);
-  if (price > 0) {
-    const whole = Math.floor(price);
-    const cents = Math.round((price - whole) * 100).toString().padStart(2,'0');
-    const col   = document.createElement('div');
-    col.style.cssText = 'display:flex;flex-direction:column;gap:0.8vh;';
-    const pr = document.createElement('div'); pr.className = 'price-row';
-    pr.innerHTML = `<span class="price-dollar">$</span><span class="price-whole">${whole}</span><span class="price-cents">.${cents}</span>`;
-    col.appendChild(pr);
-    if (was > 0 && was > price) {
-      const ws = document.createElement('div'); ws.className = 'was-save';
-      ws.innerHTML = `<span class="was">WAS $${was.toFixed(2)}</span><span class="save-badge">SAVE $${Math.round(was-price)}</span>`;
-      col.appendChild(ws);
+  let priceHtml = '';
+  if (p.price) {
+    let wasHtml = '';
+    if (p.was_price) {
+      const save = (parseFloat(p.was_price) - parseFloat(p.price)).toFixed(2);
+      wasHtml = `<div class="was-row"><span class="price-was">$${esc(p.was_price)}</span><span class="price-save">Save $${save}</span></div>`;
     }
-    priceEl.appendChild(col);
-  } else {
-    const ask = document.createElement('div'); ask.className = 'price-ask'; ask.textContent = 'Ask in store'; priceEl.appendChild(ask);
+    priceHtml = `<div class="price-zone">${wasHtml}<span class="price-now"><span class="dollar">$</span>${esc(p.price)}</span></div>`;
   }
 
-  // tags
-  const tagsEl = document.getElementById('pTags'); tagsEl.innerHTML = '';
-  const tagCls = ['tag-purple','tag-green','tag-orange','tag-purple'];
-  if (p.tags) {
-    p.tags.split(',').map(t=>t.trim()).filter(Boolean).slice(0,4).forEach((t,i) => {
-      const s = document.createElement('span'); s.className = 'tag ' + tagCls[i%tagCls.length]; s.textContent = t; tagsEl.appendChild(s);
+  const tagHtml = (p.tags || '')
+    .split(',').map(t => t.trim()).filter(Boolean)
+    .map(t => `<span class="tag">${esc(t)}</span>`).join('');
+
+  const descHtml = (p.subtitle || p.description) ? `
+    <div class="desc-zone">
+      ${p.subtitle    ? `<div class="subtitle">${esc(p.subtitle)}</div>` : ''}
+      ${p.description ? `<div class="description">${esc(p.description)}</div>` : ''}
+    </div>` : '';
+
+  return `
+    <div class="product-slide">
+      <div class="left-panel">
+        <div class="meta-zone">
+          <div class="cat-label">${esc(p.category || '')}</div>
+          <div class="brand-label">${esc(p.brand || '')}</div>
+        </div>
+        <div class="name-zone">
+          <div class="product-name">${nameHtml}</div>
+        </div>
+        ${descHtml}
+        ${priceHtml}
+        ${tagHtml ? `<div class="tags">${tagHtml}</div>` : ''}
+      </div>
+      <div class="right-panel">
+        <div class="watermark"></div>
+        ${imgHtml}
+      </div>
+    </div>`;
+}
+
+// ── Build promo slide HTML ──
+function buildPromoSlide(p) {
+  if (p.youtube_url) {
+    if (p.video_type === 'mp4') {
+      return `<div class="promo-slide"><video src="${esc(p.youtube_url)}" autoplay muted loop playsinline></video></div>`;
+    }
+    return `<div class="promo-slide"><iframe src="${esc(p.youtube_url)}" allow="autoplay; encrypted-media" allowfullscreen></iframe></div>`;
+  }
+  const img = p.display_image || p.image_url || '';
+  if (img) {
+    return `<div class="promo-slide"><img src="${esc(img)}" alt="${esc(p.name)}"></div>`;
+  }
+  return `<div class="promo-slide" style="color:#fff;font-size:32px;font-weight:700">${esc(p.name)}</div>`;
+}
+
+// ── Render all slides into DOM ──
+function renderSlides() {
+  const container = document.getElementById('slideContainer');
+  container.innerHTML = '';
+
+  slides.forEach((p, idx) => {
+    const div = document.createElement('div');
+    div.className = 'slide';
+    div.dataset.index = idx;
+    div.dataset.type  = p.type || 'product';
+
+    if (p.type === 'promo') {
+      div.innerHTML = buildPromoSlide(p);
+    } else {
+      div.innerHTML = buildProductSlide(p, idx);
+    }
+    container.appendChild(div);
+  });
+
+  // Transition slide
+  const ts = document.createElement('div');
+  ts.className = 'slide';
+  ts.id = 'transitionSlide';
+  ts.dataset.type = 'transition';
+  ts.innerHTML = `
+    <div class="transition-slide">
+      <div class="brand-text">WholeLife</div>
+      <div class="brand-sub">Pharmacy &amp; Healthfoods</div>
+      <div class="loading-bar-wrap"><div class="loading-bar" id="loadingBar"></div></div>
+    </div>`;
+  container.appendChild(ts);
+}
+
+// ── Show a slide ──
+function showSlide(idx, useTransition) {
+  const allSlides = document.querySelectorAll('.slide:not(#transitionSlide)');
+  if (!allSlides.length) return;
+  const outgoing = allSlides[idx === current ? (idx + 1) % allSlides.length : current];
+
+  if (useTransition) {
+    allSlides.forEach(s => {
+      s.classList.remove('visible');
+      const v = s.querySelector('video');
+      if (v) { v.pause(); }
+      setTimeout(() => s.classList.remove('active'), 700);
     });
-  }
-
-  // image
-  const ib = document.getElementById('imgBox'); ib.innerHTML = '';
-  const url = p.display_image || p.image_url;
-  if (url) {
-    const img = document.createElement('img'); img.src = url; img.alt = p.name; img.referrerPolicy = 'no-referrer';
-    img.onerror = () => { ib.innerHTML = '<div class="placeholder">📦</div>'; }; ib.appendChild(img);
-  } else { ib.innerHTML = '<div class="placeholder">📦</div>'; }
-
-  requestAnimationFrame(() => {
-    document.querySelectorAll('.anim').forEach(e => { e.classList.remove('out'); e.classList.add('in'); });
-    ib.classList.remove('out'); ib.classList.add('in');
-  });
-  resetProg(SLIDE_SEC); setTimeout(() => startProg(SLIDE_SEC), 60); scheduleNext(SLIDE_SEC);
-}
-
-function showPromo(p, isVideo, isYT, SLIDE_SEC) {
-  const prodSlide = document.getElementById('productSlide');
-  const promoSlide = document.getElementById('promoSlide');
-  const trScreen   = document.getElementById('transitionScreen');
-  const pb         = document.getElementById('promoBox');
-  prodSlide.style.display = 'none'; pb.innerHTML = '';
-
-  if (isVideo) {
-    promoSlide.style.display = 'none'; trScreen.style.display = 'flex';
-    const vid = document.createElement('video');
-    vid.src = p.youtube_url; vid.loop = false; vid.muted = false;
-    vid.playsInline = true; vid.controls = false; vid.preload = 'auto';
-    vid.style.cssText = 'position:absolute;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity 0.6s ease;';
-    pb.appendChild(vid);
-    const reveal = () => { trScreen.style.display='none'; promoSlide.style.display='flex'; vid.style.opacity='1'; vid.play().catch(()=>{vid.muted=true;vid.play();}); };
-    vid.readyState >= 3 ? reveal() : vid.addEventListener('canplay', reveal, {once:true});
-    vid.addEventListener('ended', () => next()); scheduleNext(180);
-  } else if (isYT) {
-    trScreen.style.display = 'none'; promoSlide.style.display = 'flex';
-    const iframe = document.createElement('iframe');
-    iframe.src = p.youtube_url; iframe.style.cssText = 'width:100%;height:100%;border:none;';
-    iframe.allow = 'autoplay;fullscreen'; iframe.allowFullscreen = true; pb.appendChild(iframe); scheduleNext(180);
-  } else {
-    trScreen.style.display = 'none'; promoSlide.style.display = 'flex';
-    if (p.display_image || p.image_url) {
-      const img = document.createElement('img'); img.src = p.display_image || p.image_url; img.alt = p.name || ''; pb.appendChild(img);
+    const ts = document.getElementById('transitionSlide');
+    const bar = document.getElementById('loadingBar');
+    if (ts) {
+      ts.classList.add('active');
+      requestAnimationFrame(() => requestAnimationFrame(() => ts.classList.add('visible')));
+      if (bar) { bar.style.animation = 'none'; bar.offsetHeight; bar.style.animation = 'loadBar 1.2s ease-in-out forwards'; }
+      setTimeout(() => {
+        ts.classList.remove('visible');
+        setTimeout(() => {
+          ts.classList.remove('active');
+          if (allSlides[idx]) {
+            allSlides[idx].classList.add('active');
+            requestAnimationFrame(() => requestAnimationFrame(() => allSlides[idx].classList.add('visible')));
+          }
+        }, 700);
+      }, 1200);
     }
-    resetProg(PROMO_SEC); setTimeout(()=>startProg(PROMO_SEC),60); scheduleNext(PROMO_SEC);
+  } else {
+    // Smooth crossfade — new slide fades in on top
+    if (allSlides[idx]) {
+      allSlides[idx].classList.add('active');
+      requestAnimationFrame(() => requestAnimationFrame(() => {
+        allSlides[idx].classList.add('visible');
+        if (outgoing && outgoing !== allSlides[idx]) {
+          outgoing.classList.remove('visible');
+          setTimeout(() => {
+            outgoing.classList.remove('active');
+            const v = outgoing.querySelector('video');
+            if (v) { v.pause(); }
+          }, 700);
+        }
+      }));
+    }
   }
 }
 
-function next() { show((cur+1) % slides.length); }
-
-async function boot() {
-  buildTicker(null);
-  await loadData();
-  if (slides.length) { show(0); }
-  setInterval(async () => { await loadData(); }, REFRESH_MS);
+function scheduleNext(slideEl) {
+  const video = slideEl ? slideEl.querySelector('video') : null;
+  if (video) {
+    video.currentTime = 0;
+    video.play().catch(() => {});
+    let done = false;
+    const advance = () => { if (!done) { done = true; nextSlide(); } };
+    video.onended = advance;
+    setTimeout(advance, 120000); // 2 min safety fallback
+    return;
+  }
+  const isPromo = slideEl && slideEl.dataset.type === 'promo';
+  const sec = (settings.slide_seconds || 8) * (isPromo ? 2 : 1) * 1000;
+  setTimeout(nextSlide, sec);
 }
-boot();
+
+function startShow() {
+  const allSlides = document.querySelectorAll('.slide:not(#transitionSlide)');
+  if (!allSlides.length) return;
+  current = 0;
+  allSlides[0].classList.add('active', 'visible');
+  if (slideTimer) clearInterval(slideTimer);
+  scheduleNext(allSlides[0]);
+}
+
+function nextSlide() {
+  const allSlides = document.querySelectorAll('.slide:not(#transitionSlide)');
+  if (!allSlides.length) return;
+  const prev = current;
+  current = (current + 1) % allSlides.length;
+  const prevIsVideo = !!allSlides[prev].querySelector('video');
+  const nextIsVideo = !!allSlides[current].querySelector('video');
+  showSlide(current, prevIsVideo || nextIsVideo);
+  setTimeout(() => scheduleNext(allSlides[current]), prevIsVideo || nextIsVideo ? 2000 : 800);
+}
+
+// ── Refresh data without interrupting show ──
+async function refreshData() {
+  const ok = await loadData();
+  if (ok) {
+    renderSlides();
+    buildTicker();
+    // Don't restart the timer — just update content in place
+  }
+}
+
+// ── Escape HTML ──
+function esc(s) {
+  return String(s || '').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+}
+
+// ── Init ──
+async function init() {
+  const ok = await loadData();
+
+  if (!ok || slides.length === 0) {
+    document.getElementById('loadOverlay').innerHTML = `
+      <img src="images/wholelife-logo-wide.jpg" alt="WholeLife" onerror="this.style.display='none'">
+      <p style="color:rgba(255,255,255,.7)">Waiting for products… refreshing in 30 seconds</p>`;
+    setTimeout(init, 30000);
+    return;
+  }
+
+  renderSlides();
+  buildTicker();
+  document.getElementById('loadOverlay').style.display = 'none';
+  startShow();
+
+  // Refresh every 5 minutes
+  setInterval(refreshData, REFRESH_INTERVAL);
+}
+
+init();
 </script>
+
 </body>
 </html>
