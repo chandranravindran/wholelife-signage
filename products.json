@@ -1,24 +1,24 @@
 {
   "slides": [
     {
-      "id": 2,
+      "id": 1,
       "type": "product",
-      "url": "https://wholelife.com.au/product/mens-multi-60-tablets/",
-      "name": "Men's Multi 60 Tablets ",
-      "image_url": "https://wholelife.b-cdn.net/wp-content/uploads/2022/02/Mens-Multi-60-Tablets.jpg",
-      "display_image": "https://raw.githubusercontent.com/chandranravindran/wholelife-signage/main/images/herbs-of-gold-mens-multi-60-tablets-wholelife.png",
-      "price": "47.49",
+      "url": "https://wholelife.com.au/product/saw-palmetto-50-capsules/",
+      "name": "Saw Palmetto 50 Capsules | WholeLife",
+      "image_url": "https://wholelife.b-cdn.net/wp-content/uploads/2023/03/Saw-Palmetto-50-Capsules-1.jpg",
+      "display_image": "https://raw.githubusercontent.com/chandranravindran/wholelife-signage/main/images/saw-palmetto-50-capsules-wholelife.png",
+      "price": "50.99",
       "was_price": "",
-      "category": "vitamins",
-      "brand": "Herbs of Gold",
+      "category": "",
+      "brand": "",
       "subtitle": "",
       "description": "",
-      "tags": "Australian Made, Dairy Free, Gluten Free, Vegan",
+      "tags": "Dairy Free, Gluten Free",
       "status": "active",
       "order": 0,
       "source": "wholelife",
       "notes": "Fetched OK",
-      "updated_at": "2026-04-29T11:55:42.531852"
+      "updated_at": "2026-04-29T13:06:57.953306"
     }
   ],
   "settings": {
