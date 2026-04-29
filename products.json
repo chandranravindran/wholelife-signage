@@ -24,13 +24,13 @@
       "id": 2,
       "type": "product",
       "url": "https://wholelife.com.au/product/mens-multi-60-tablets/",
-      "name": "Herbs of Gold Men's Multi 60 Tablets ",
+      "name": "Men's Multi 60 Tablets ",
       "image_url": "https://wholelife.b-cdn.net/wp-content/uploads/2022/02/Mens-Multi-60-Tablets.jpg",
       "display_image": "https://raw.githubusercontent.com/chandranravindran/wholelife-signage/main/images/herbs-of-gold-mens-multi-60-tablets-wholelife.png",
       "price": "47.49",
       "was_price": "",
       "category": "vitamins",
-      "brand": "",
+      "brand": "Herbs of Gold",
       "subtitle": "",
       "description": "",
       "tags": "Australian Made, Dairy Free, Gluten Free, Vegan",
@@ -38,7 +38,7 @@
       "order": 0,
       "source": "wholelife",
       "notes": "Fetched OK",
-      "updated_at": "2026-04-29T11:54:59.256740"
+      "updated_at": "2026-04-29T11:55:42.531852"
     }
   ],
   "settings": {
