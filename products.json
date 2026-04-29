@@ -1,46 +1,5 @@
 {
-  "slides": [
-    {
-      "id": 6,
-      "type": "product",
-      "url": "https://wholelife.com.au/product/clear-skin-60-tablets/",
-      "name": "HERBS OF GOLD Clear Skin 60 Tablets ",
-      "image_url": "https://wholelife.b-cdn.net/wp-content/uploads/2022/06/Clear-Skin-60-Tabs.jpg",
-      "display_image": "https://raw.githubusercontent.com/chandranravindran/wholelife-signage/main/images/herbs-of-gold-clear-skin-60-tablets-wholelife.png",
-      "price": "41.49",
-      "was_price": "",
-      "category": "beauty",
-      "brand": "",
-      "subtitle": "",
-      "description": "",
-      "tags": "Dairy Free, Gluten Free, Vegan",
-      "status": "active",
-      "order": 0,
-      "source": "wholelife",
-      "notes": "Fetched OK",
-      "updated_at": "2026-04-29T10:28:23.413546"
-    },
-    {
-      "id": 7,
-      "type": "product",
-      "url": "https://wholelife.com.au/product/high-strength-iron-30s/",
-      "name": "Nature's Way High Strength Iron + Vitamin C & B12 30 Tablets ",
-      "image_url": "https://wholelife.b-cdn.net/wp-content/uploads/2022/03/931480707686320Natures20Way20High20Strength20Iron2020Vitamin20C2020B12203020Tablets.jpg",
-      "display_image": "https://raw.githubusercontent.com/chandranravindran/wholelife-signage/main/images/natures-way-high-strength-iron-vitamin-c-b12-30-tablets-whol.png",
-      "price": "11.99",
-      "was_price": "",
-      "category": "energy",
-      "brand": "",
-      "subtitle": "",
-      "description": "",
-      "tags": "Australian Made, Dairy Free",
-      "status": "active",
-      "order": 0,
-      "source": "wholelife",
-      "notes": "Fetched OK",
-      "updated_at": "2026-04-29T10:28:39.797758"
-    }
-  ],
+  "slides": [],
   "settings": {
     "github_repo": "chandranravindran/wholelife-signage",
     "slide_seconds": 6,
