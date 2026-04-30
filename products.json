@@ -41,12 +41,12 @@
       "updated_at": "2026-04-29T13:07:36.059574"
     },
     {
-      "id": 4,
+      "id": 3,
       "type": "promo",
-      "name": "campaign",
+      "name": "New Promo Slide",
       "image_url": "",
       "display_image": "",
-      "youtube_url": "https://raw.githubusercontent.com/chandranravindran/wholelife-signage/main/images/campaign.mp4",
+      "youtube_url": "https://raw.githubusercontent.com/chandranravindran/wholelife-signage/main/images/new-promo-slide.mp4",
       "price": "",
       "was_price": "",
       "category": "promo",
@@ -57,8 +57,8 @@
       "status": "active",
       "order": 999,
       "source": "promo",
-      "notes": "MP4 video: campaign.mp4",
-      "updated_at": "2026-04-30T06:47:52.696994",
+      "notes": "MP4 video: new-promo-slide.mp4",
+      "updated_at": "2026-05-01T06:48:09.732704",
       "video_type": "mp4"
     }
   ],
