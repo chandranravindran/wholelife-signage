@@ -391,7 +391,9 @@ function showSlide(idx, useTransition) {
       ts.classList.add('active');
       requestAnimationFrame(() => requestAnimationFrame(() => ts.classList.add('visible')));
       if (bar) { bar.style.animation = 'none'; bar.offsetHeight; bar.style.animation = 'loadBar 1.2s ease-in-out forwards'; }
-      setTimeout(() => {
+
+      const nextVideo = allSlides[idx] ? allSlides[idx].querySelector('video') : null;
+      const revealSlide = () => {
         ts.classList.remove('visible');
         setTimeout(() => {
           ts.classList.remove('active');
@@ -400,10 +402,17 @@ function showSlide(idx, useTransition) {
             requestAnimationFrame(() => requestAnimationFrame(() => allSlides[idx].classList.add('visible')));
           }
         }, 700);
-      }, 1200);
+      };
+      if (nextVideo) {
+        let revealed = false;
+        const doReveal = () => { if (!revealed) { revealed = true; revealSlide(); } };
+        nextVideo.addEventListener('canplay', doReveal, { once: true });
+        setTimeout(doReveal, 3000);
+      } else {
+        setTimeout(revealSlide, 1200);
+      }
     }
   } else {
-    // Smooth crossfade — new slide fades in on top
     if (allSlides[idx]) {
       allSlides[idx].classList.add('active');
       requestAnimationFrame(() => requestAnimationFrame(() => {
