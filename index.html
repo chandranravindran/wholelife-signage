@@ -327,7 +327,7 @@ function buildProductSlide(p, idx) {
 function buildPromoSlide(p) {
   if (p.youtube_url) {
     if (p.video_type === 'mp4') {
-      return `<div class="promo-slide"><video src="${esc(p.youtube_url)}" autoplay muted playsinline></video></div>`;
+      return `<div class="promo-slide"><video src="${esc(p.youtube_url)}" preload="auto" muted playsinline></video></div>`;
     }
     return `<div class="promo-slide"><iframe src="${esc(p.youtube_url)}" allow="autoplay; encrypted-media" allowfullscreen></iframe></div>`;
   }
@@ -503,6 +503,8 @@ async function init() {
   renderSlides();
   buildTicker();
   document.getElementById('loadOverlay').style.display = 'none';
+  // Preload all videos immediately
+  document.querySelectorAll('.slide video').forEach(v => v.load());
   startShow();
 
   // Refresh every 5 minutes
