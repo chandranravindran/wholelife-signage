@@ -41,26 +41,6 @@
       "updated_at": "2026-04-29T13:07:36.059574"
     },
     {
-      "id": 3,
-      "type": "promo",
-      "name": "promo banner",
-      "image_url": "/static/images/promo-banner.jpg",
-      "display_image": "/static/images/promo-banner.jpg",
-      "youtube_url": "",
-      "price": "",
-      "was_price": "",
-      "category": "promo",
-      "brand": "",
-      "subtitle": "",
-      "description": "",
-      "tags": "",
-      "status": "active",
-      "order": 999,
-      "source": "promo",
-      "notes": "Promotional banner",
-      "updated_at": "2026-04-30T06:42:30.522913"
-    },
-    {
       "id": 4,
       "type": "promo",
       "name": "campaign",
