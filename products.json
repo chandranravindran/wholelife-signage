@@ -39,6 +39,27 @@
       "source": "wholelife",
       "notes": "Fetched OK",
       "updated_at": "2026-04-29T13:07:36.059574"
+    },
+    {
+      "id": 3,
+      "type": "promo",
+      "name": "StorePromotion",
+      "image_url": "",
+      "display_image": "",
+      "youtube_url": "/static/images/storepromotion.mp4",
+      "price": "",
+      "was_price": "",
+      "category": "promo",
+      "brand": "",
+      "subtitle": "",
+      "description": "",
+      "tags": "",
+      "status": "active",
+      "order": 999,
+      "source": "promo",
+      "notes": "MP4 local only (GitHub upload failed: GitHub push failed: 422 {\"message\":\"Sorry, the file is too large to be processed. Consider creating/updating the file in a local clone and pushing it to GitHub.\",\"documentation_url\":\"https://docs.github.com/rest/repos/conten)",
+      "updated_at": "2026-05-02T07:04:42.786905",
+      "video_type": "mp4"
     }
   ],
   "settings": {
