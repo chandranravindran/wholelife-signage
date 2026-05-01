@@ -79,6 +79,26 @@
       "source": "wholelife",
       "notes": "Fetched OK",
       "updated_at": "2026-05-02T08:52:09.370843"
+    },
+    {
+      "id": 5,
+      "type": "product",
+      "url": "https://wholelife.com.au/product/bone-broth-healing-mushrooms-390g/",
+      "name": "Bone Broth Organic Mushroom 390g",
+      "image_url": "https://wholelife.b-cdn.net/wp-content/uploads/2024/10/Bone-Broth-Organic-Mushroom-390g.jpg",
+      "display_image": "https://raw.githubusercontent.com/chandranravindran/wholelife-signage/main/images/bone-broth-organic-mushroom-390g.png",
+      "price": "33.99",
+      "was_price": "",
+      "category": "",
+      "brand": "",
+      "subtitle": "",
+      "description": "Support gut health, joint function, and skin health",
+      "tags": "Immunity",
+      "status": "active",
+      "order": 0,
+      "source": "wholelife",
+      "notes": "Fetched OK",
+      "updated_at": "2026-05-02T08:55:29.986591"
     }
   ],
   "settings": {
