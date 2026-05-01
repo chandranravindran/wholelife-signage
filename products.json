@@ -79,6 +79,26 @@
       "source": "wholelife",
       "notes": "Fetched OK",
       "updated_at": "2026-05-02T09:14:55.378934"
+    },
+    {
+      "id": 9,
+      "type": "product",
+      "url": "https://wholelife.com.au/product/lavender-oil-56-capsules-80mg/",
+      "name": "Seremind Lavender Oil 56 Capsules 80mg",
+      "image_url": "https://wholelife.b-cdn.net/wp-content/uploads/2022/06/80mg-Lavender-Oil-56-Capsules-1.jpg",
+      "display_image": "https://raw.githubusercontent.com/chandranravindran/wholelife-signage/main/images/seremind-lavender-oil-56-capsules-80mg.png",
+      "price": "37.99",
+      "was_price": "",
+      "category": "stress",
+      "brand": "",
+      "subtitle": "",
+      "description": "Relieves symptoms of mild anxiety, nervous tension and Improve sleep quality",
+      "tags": "",
+      "status": "active",
+      "order": 0,
+      "source": "wholelife",
+      "notes": "Fetched OK",
+      "updated_at": "2026-05-02T09:20:12.631103"
     }
   ],
   "settings": {
