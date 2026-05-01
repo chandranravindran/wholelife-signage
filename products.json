@@ -61,6 +61,26 @@
       "updated_at": "2026-05-02T09:12:20.916034"
     },
     {
+      "id": 10,
+      "type": "promo",
+      "name": "FluVaccination",
+      "image_url": "/static/images/fluvaccination.webp",
+      "display_image": "/static/images/fluvaccination.webp",
+      "youtube_url": "",
+      "price": "",
+      "was_price": "",
+      "category": "promo",
+      "brand": "",
+      "subtitle": "",
+      "description": "",
+      "tags": "",
+      "status": "active",
+      "order": 999,
+      "source": "promo",
+      "notes": "Promotional banner",
+      "updated_at": "2026-05-02T09:36:59.608764"
+    },
+    {
       "id": 8,
       "type": "product",
       "url": "https://wholelife.com.au/product/kids-pops-strawberry-10-pack/",
