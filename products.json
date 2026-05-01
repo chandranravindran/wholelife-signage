@@ -79,6 +79,26 @@
       "source": "wholelife",
       "notes": "Fetched OK",
       "updated_at": "2026-05-02T09:08:46.434185"
+    },
+    {
+      "id": 7,
+      "type": "product",
+      "url": "https://wholelife.com.au/product/zinc-c-60-chewable-tablets/",
+      "name": "Zinc + C 60 Chewable Tablets ",
+      "image_url": "https://wholelife.b-cdn.net/wp-content/uploads/2023/05/Zinc-C-60-Chewable-Tablets.jpg",
+      "display_image": "https://raw.githubusercontent.com/chandranravindran/wholelife-signage/main/images/zinc-c-60-chewable-tablets.png",
+      "price": "15.99",
+      "was_price": "",
+      "category": "immunity",
+      "brand": "",
+      "subtitle": "",
+      "description": "Supports healthy immune system function",
+      "tags": "",
+      "status": "active",
+      "order": 0,
+      "source": "wholelife",
+      "notes": "Fetched OK",
+      "updated_at": "2026-05-02T09:12:20.916034"
     }
   ],
   "settings": {
