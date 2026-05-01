@@ -1,26 +1,6 @@
 {
   "slides": [
     {
-      "id": 2,
-      "type": "product",
-      "url": "https://wholelife.com.au/product/mens-multi-60-tablets/",
-      "name": "Herbs of Gold Men's Multi 60 Tablets | WholeLife",
-      "image_url": "https://wholelife.b-cdn.net/wp-content/uploads/2022/02/Mens-Multi-60-Tablets.jpg",
-      "display_image": "https://raw.githubusercontent.com/chandranravindran/wholelife-signage/main/images/herbs-of-gold-mens-multi-60-tablets-wholelife.png",
-      "price": "47.49",
-      "was_price": "",
-      "category": "vitamins",
-      "brand": "",
-      "subtitle": "",
-      "description": "",
-      "tags": "Australian Made, Dairy Free, Gluten Free, Vegan",
-      "status": "active",
-      "order": 0,
-      "source": "wholelife",
-      "notes": "Fetched OK",
-      "updated_at": "2026-04-29T13:07:36.059574"
-    },
-    {
       "id": 3,
       "type": "product",
       "url": "https://wholelife.com.au/product/organic-100-sour-cherry-juice-1l/",
@@ -79,6 +59,26 @@
       "source": "wholelife",
       "notes": "Fetched OK",
       "updated_at": "2026-05-02T08:55:29.986591"
+    },
+    {
+      "id": 6,
+      "type": "product",
+      "url": "https://wholelife.com.au/product/active-magnesium-glycinate-200-tablets/",
+      "name": "Active Magnesium Glycinate 200 Tablets",
+      "image_url": "https://wholelife.b-cdn.net/wp-content/uploads/2026/03/Active-Magnesium-Glycinate-200-Tablets-.jpg",
+      "display_image": "https://wholelife.b-cdn.net/wp-content/uploads/2026/03/Active-Magnesium-Glycinate-200-Tablets-.jpg",
+      "price": "56.99",
+      "was_price": "",
+      "category": "energy",
+      "brand": "",
+      "subtitle": "",
+      "description": "",
+      "tags": "",
+      "status": "active",
+      "order": 0,
+      "source": "wholelife",
+      "notes": "Fetched OK",
+      "updated_at": "2026-05-02T09:04:15.682942"
     }
   ],
   "settings": {
