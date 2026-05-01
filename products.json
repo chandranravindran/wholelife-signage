@@ -59,6 +59,26 @@
       "source": "wholelife",
       "notes": "Fetched OK",
       "updated_at": "2026-05-02T09:12:20.916034"
+    },
+    {
+      "id": 8,
+      "type": "product",
+      "url": "https://wholelife.com.au/product/kids-pops-strawberry-10-pack/",
+      "name": "Kids Pops Strawberry 10 Pack | WholeLife",
+      "image_url": "https://wholelife.b-cdn.net/wp-content/uploads/2024/07/Kids-Pops-Strawberry-10-Pack.jpg",
+      "display_image": "https://raw.githubusercontent.com/chandranravindran/wholelife-signage/main/images/kids-pops-strawberry-10-pack-wholelife.png",
+      "price": "10.99",
+      "was_price": "",
+      "category": "baby",
+      "brand": "",
+      "subtitle": "",
+      "description": "Help to soothe dry, tickly throats while supporting children’s immune health",
+      "tags": "",
+      "status": "active",
+      "order": 0,
+      "source": "wholelife",
+      "notes": "Fetched OK",
+      "updated_at": "2026-05-02T09:14:55.378934"
     }
   ],
   "settings": {
