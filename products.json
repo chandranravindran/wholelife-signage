@@ -39,6 +39,26 @@
       "source": "wholelife",
       "notes": "Fetched OK",
       "updated_at": "2026-04-29T13:07:36.059574"
+    },
+    {
+      "id": 3,
+      "type": "product",
+      "url": "https://wholelife.com.au/product/organic-100-sour-cherry-juice-1l/",
+      "name": "Organic 100% Sour Cherry Juice 1L ",
+      "image_url": "https://wholelife.b-cdn.net/wp-content/uploads/2022/02/Organic-100-Sour-Cherry-Juice-1L.jpg",
+      "display_image": "https://raw.githubusercontent.com/chandranravindran/wholelife-signage/main/images/organic-100-sour-cherry-juice-1l.png",
+      "price": "18.99",
+      "was_price": "",
+      "category": "",
+      "brand": "",
+      "subtitle": "",
+      "description": "",
+      "tags": "Natural, Organic, Vegan",
+      "status": "active",
+      "order": 0,
+      "source": "wholelife",
+      "notes": "Fetched OK",
+      "updated_at": "2026-05-02T08:50:37.730246"
     }
   ],
   "settings": {
