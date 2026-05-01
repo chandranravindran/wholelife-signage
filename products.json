@@ -59,6 +59,26 @@
       "source": "wholelife",
       "notes": "Fetched OK",
       "updated_at": "2026-05-02T08:50:37.730246"
+    },
+    {
+      "id": 4,
+      "type": "product",
+      "url": "https://wholelife.com.au/product/natural-goat-milk-toddler-formula-stage-3-800g/",
+      "name": "Natural Goat Milk Toddler Formula Stage 3 800g",
+      "image_url": "https://wholelife.b-cdn.net/wp-content/uploads/2022/10/Natural-Goat-Milk-Toddler-Formula-Stage-3-800g.jpg",
+      "display_image": "https://raw.githubusercontent.com/chandranravindran/wholelife-signage/main/images/natural-goat-milk-toddler-formula-stage-3-800g.png",
+      "price": "48.99",
+      "was_price": "",
+      "category": "baby",
+      "brand": "",
+      "subtitle": "",
+      "description": "",
+      "tags": "Palm Oil Free",
+      "status": "active",
+      "order": 0,
+      "source": "wholelife",
+      "notes": "Fetched OK",
+      "updated_at": "2026-05-02T08:52:09.370843"
     }
   ],
   "settings": {
