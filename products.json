@@ -119,26 +119,6 @@
       "source": "wholelife",
       "notes": "Fetched OK",
       "updated_at": "2026-05-02T09:39:32.489822"
-    },
-    {
-      "id": 12,
-      "type": "promo",
-      "name": "Click and collect",
-      "image_url": "/static/images/click-and-collect.webp",
-      "display_image": "/static/images/click-and-collect.webp",
-      "youtube_url": "",
-      "price": "",
-      "was_price": "",
-      "category": "promo",
-      "brand": "",
-      "subtitle": "",
-      "description": "",
-      "tags": "",
-      "status": "active",
-      "order": 999,
-      "source": "promo",
-      "notes": "Promotional banner",
-      "updated_at": "2026-05-02T09:40:17.344097"
     }
   ],
   "settings": {
