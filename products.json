@@ -119,6 +119,26 @@
       "source": "wholelife",
       "notes": "Fetched OK",
       "updated_at": "2026-05-02T09:39:32.489822"
+    },
+    {
+      "id": 12,
+      "type": "promo",
+      "name": "Flu campaign",
+      "image_url": "/static/images/flu-campaign.png",
+      "display_image": "/static/images/flu-campaign.png",
+      "youtube_url": "",
+      "price": "",
+      "was_price": "",
+      "category": "promo",
+      "brand": "",
+      "subtitle": "",
+      "description": "",
+      "tags": "",
+      "status": "active",
+      "order": 999,
+      "source": "promo",
+      "notes": "Promotional banner",
+      "updated_at": "2026-05-06T15:47:46.353612"
     }
   ],
   "settings": {
