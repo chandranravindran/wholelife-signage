@@ -55,7 +55,7 @@
       "description": "Supports healthy immune system function",
       "tags": "",
       "status": "active",
-      "order": 3,
+      "order": 4,
       "source": "wholelife",
       "notes": "Fetched OK",
       "updated_at": "2026-05-02T09:12:20.916034"
@@ -75,7 +75,7 @@
       "description": "Help to soothe dry, tickly throats while supporting children’s immune health",
       "tags": "",
       "status": "active",
-      "order": 4,
+      "order": 5,
       "source": "wholelife",
       "notes": "Fetched OK",
       "updated_at": "2026-05-02T09:14:55.378934"
@@ -95,7 +95,7 @@
       "description": "Relieves symptoms of mild anxiety, nervous tension and Improve sleep quality",
       "tags": "",
       "status": "active",
-      "order": 5,
+      "order": 6,
       "source": "wholelife",
       "notes": "Fetched OK",
       "updated_at": "2026-05-02T09:20:12.631103"
@@ -115,7 +115,7 @@
       "description": "Our Natural Bone Broth Body Glue™ is made using just 2 ingredients – 100% grass-fed Australian beef bones and naturally evaporated sea salt",
       "tags": "Body Glue",
       "status": "active",
-      "order": 6,
+      "order": 7,
       "source": "wholelife",
       "notes": "Fetched OK",
       "updated_at": "2026-05-02T09:39:32.489822"
@@ -155,7 +155,7 @@
       "description": "",
       "tags": "",
       "status": "active",
-      "order": 7,
+      "order": 3,
       "source": "promo",
       "notes": "Promotional banner",
       "updated_at": "2026-05-06T17:24:42.450766"
