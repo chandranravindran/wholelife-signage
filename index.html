@@ -373,104 +373,117 @@ function renderSlides() {
 }
 
 // ── Show a slide ──
-function showSlide(idx, useTransition) {
-  const allSlides = document.querySelectorAll('.slide:not(#transitionSlide)');
+function showSlide(idx, prevIdx, useTransition) {
+  const allSlides = Array.from(document.querySelectorAll('.slide:not(#transitionSlide)'));
   if (!allSlides.length) return;
-  const outgoing = allSlides[idx === current ? (idx + 1) % allSlides.length : current];
 
   if (useTransition) {
     allSlides.forEach(s => {
-      s.classList.remove('visible');
+      s.classList.remove('visible', 'active');
       const v = s.querySelector('video');
-      if (v) { v.pause(); }
-      setTimeout(() => s.classList.remove('active'), 700);
+      if (v) v.pause();
     });
-    const ts = document.getElementById('transitionSlide');
+    const ts  = document.getElementById('transitionSlide');
     const bar = document.getElementById('loadingBar');
     if (ts) {
-      ts.classList.add('active');
-      requestAnimationFrame(() => requestAnimationFrame(() => ts.classList.add('visible')));
+      ts.classList.add('active', 'visible');
       if (bar) { bar.style.animation = 'none'; bar.offsetHeight; bar.style.animation = 'loadBar 1.2s ease-in-out forwards'; }
-
       const nextVideo = allSlides[idx] ? allSlides[idx].querySelector('video') : null;
-      const revealSlide = () => {
+      const reveal = () => {
         ts.classList.remove('visible');
         setTimeout(() => {
           ts.classList.remove('active');
-          if (allSlides[idx]) {
-            allSlides[idx].classList.add('active');
-            requestAnimationFrame(() => requestAnimationFrame(() => allSlides[idx].classList.add('visible')));
-          }
-        }, 700);
+          if (allSlides[idx]) allSlides[idx].classList.add('active', 'visible');
+        }, 400);
       };
       if (nextVideo) {
-        let revealed = false;
-        const doReveal = () => { if (!revealed) { revealed = true; revealSlide(); } };
+        let done = false;
+        const doReveal = () => { if (!done) { done = true; reveal(); } };
         nextVideo.addEventListener('canplay', doReveal, { once: true });
         setTimeout(doReveal, 3000);
       } else {
-        setTimeout(revealSlide, 1200);
+        setTimeout(reveal, 1000);
       }
     }
   } else {
+    // Show new slide first, then hide old one — no white gap
     if (allSlides[idx]) {
       allSlides[idx].classList.add('active');
       requestAnimationFrame(() => requestAnimationFrame(() => {
         allSlides[idx].classList.add('visible');
+        const outgoing = allSlides[prevIdx];
         if (outgoing && outgoing !== allSlides[idx]) {
-          outgoing.classList.remove('visible');
           setTimeout(() => {
-            outgoing.classList.remove('active');
+            outgoing.classList.remove('visible', 'active');
             const v = outgoing.querySelector('video');
-            if (v) { v.pause(); }
-          }, 700);
+            if (v) v.pause();
+          }, 500);
         }
       }));
     }
   }
 }
 
-function scheduleNext(slideEl) {
-  const video  = slideEl ? slideEl.querySelector('video') : null;
-  const iframe = slideEl ? slideEl.querySelector('iframe') : null;
+let slideTimeout = null;
+
+function goToSlide(idx) {
+  const allSlides = Array.from(document.querySelectorAll('.slide:not(#transitionSlide)'));
+  if (!allSlides.length) return;
+  const prev = current;
+  current = idx;
+  const prevHasVideo = !!(allSlides[prev].querySelector('video') || allSlides[prev].querySelector('iframe'));
+  const nextHasVideo = !!(allSlides[current].querySelector('video') || allSlides[current].querySelector('iframe'));
+  showSlide(current, prev, prevHasVideo || nextHasVideo);
+}
+
+function startTimer() {
+  if (slideTimeout) clearTimeout(slideTimeout);
+  const allSlides = Array.from(document.querySelectorAll('.slide:not(#transitionSlide)'));
+  if (!allSlides.length) return;
+  const slideEl = allSlides[current];
+  const video   = slideEl ? slideEl.querySelector('video') : null;
+  const iframe  = slideEl ? slideEl.querySelector('iframe') : null;
 
   if (video) {
     video.currentTime = 0;
     video.play().catch(() => {});
     let done = false;
-    const advance = () => { if (!done) { done = true; nextSlide(); } };
+    const advance = () => {
+      if (done) return;
+      done = true;
+      video.onended = null;
+      goToSlide((current + 1) % allSlides.length);
+      slideTimeout = setTimeout(startTimer, 1000);
+    };
     video.onended = advance;
-    setTimeout(advance, 120000);
+    slideTimeout = setTimeout(advance, 120000);
     return;
   }
+
   if (iframe) {
     const duration = parseInt(slideEl.dataset.duration || '60', 10);
-    setTimeout(nextSlide, duration * 1000);
+    slideTimeout = setTimeout(() => {
+      goToSlide((current + 1) % allSlides.length);
+      slideTimeout = setTimeout(startTimer, 1000);
+    }, duration * 1000);
     return;
   }
+
   const isPromo = slideEl && slideEl.dataset.type === 'promo';
-  const sec = (settings.slide_seconds || 8) * (isPromo ? 2 : 1) * 1000;
-  setTimeout(nextSlide, sec);
+  const ms = (settings.slide_seconds || 8) * (isPromo ? 2 : 1) * 1000;
+  slideTimeout = setTimeout(() => {
+    goToSlide((current + 1) % allSlides.length);
+    slideTimeout = setTimeout(startTimer, 1000);
+  }, ms);
 }
 
 function startShow() {
-  const allSlides = document.querySelectorAll('.slide:not(#transitionSlide)');
+  const allSlides = Array.from(document.querySelectorAll('.slide:not(#transitionSlide)'));
   if (!allSlides.length) return;
   current = 0;
   allSlides[0].classList.add('active', 'visible');
   if (slideTimer) clearInterval(slideTimer);
-  scheduleNext(allSlides[0]);
-}
-
-function nextSlide() {
-  const allSlides = document.querySelectorAll('.slide:not(#transitionSlide)');
-  if (!allSlides.length) return;
-  const prev = current;
-  current = (current + 1) % allSlides.length;
-  const prevHasVideo = !!(allSlides[prev].querySelector('video') || allSlides[prev].querySelector('iframe'));
-  const nextHasVideo = !!(allSlides[current].querySelector('video') || allSlides[current].querySelector('iframe'));
-  showSlide(current, prevHasVideo || nextHasVideo);
-  setTimeout(() => scheduleNext(allSlides[current]), prevHasVideo || nextHasVideo ? 2000 : 800);
+  startTimer();
 }
 
 // ── Refresh data without interrupting show ──
