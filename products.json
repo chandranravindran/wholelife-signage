@@ -99,6 +99,26 @@
       "source": "promo",
       "notes": "Promotional banner",
       "updated_at": "2026-05-08T15:30:55.523586"
+    },
+    {
+      "id": 17,
+      "type": "promo",
+      "name": "Cough Liquid ",
+      "image_url": "/static/images/cough-liquid.png",
+      "display_image": "/static/images/cough-liquid.png",
+      "youtube_url": "",
+      "price": "",
+      "was_price": "",
+      "category": "promo",
+      "brand": "",
+      "subtitle": "",
+      "description": "",
+      "tags": "",
+      "status": "active",
+      "order": 999,
+      "source": "promo",
+      "notes": "Promotional banner",
+      "updated_at": "2026-05-08T15:45:14.770424"
     }
   ],
   "settings": {
