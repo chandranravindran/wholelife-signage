@@ -1,26 +1,6 @@
 {
   "slides": [
     {
-      "id": 11,
-      "type": "product",
-      "url": "https://wholelife.com.au/product/gevity-rx-bone-broth-body-glue-natural-390g/",
-      "name": "Gevity Rx Bone Broth Body Glue Natural 390g | WholeLife",
-      "image_url": "https://wholelife.b-cdn.net/wp-content/uploads/2022/05/Rx-Bone-Broth-Body-Glue-Natural-390g.jpg",
-      "display_image": "https://raw.githubusercontent.com/chandranravindran/wholelife-signage/main/images/gevity-rx-bone-broth-body-glue-natural-390g-wholelife.png",
-      "price": "34.99",
-      "was_price": "",
-      "category": "",
-      "brand": "",
-      "subtitle": "The Mr Versatile of Bone Broth",
-      "description": "Our Natural Bone Broth Body Glue™ is made using just 2 ingredients – 100% grass-fed Australian beef bones and naturally evaporated sea salt",
-      "tags": "Body Glue",
-      "status": "active",
-      "order": 7,
-      "source": "wholelife",
-      "notes": "Fetched OK",
-      "updated_at": "2026-05-02T09:39:32.489822"
-    },
-    {
       "id": 12,
       "type": "promo",
       "name": "Flu campaign",
@@ -59,6 +39,26 @@
       "source": "promo",
       "notes": "Promotional banner",
       "updated_at": "2026-05-06T17:24:42.450766"
+    },
+    {
+      "id": 14,
+      "type": "promo",
+      "name": "Throat relief ",
+      "image_url": "/static/images/throat-relief.png",
+      "display_image": "/static/images/throat-relief.png",
+      "youtube_url": "",
+      "price": "",
+      "was_price": "",
+      "category": "promo",
+      "brand": "",
+      "subtitle": "",
+      "description": "",
+      "tags": "",
+      "status": "active",
+      "order": 999,
+      "source": "promo",
+      "notes": "Promotional banner",
+      "updated_at": "2026-05-08T15:29:45.559657"
     }
   ],
   "settings": {
