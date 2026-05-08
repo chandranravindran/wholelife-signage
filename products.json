@@ -59,6 +59,26 @@
       "source": "promo",
       "notes": "Promotional banner",
       "updated_at": "2026-05-08T15:29:45.559657"
+    },
+    {
+      "id": 15,
+      "type": "promo",
+      "name": "Sea moss",
+      "image_url": "/static/images/sea-moss.png",
+      "display_image": "/static/images/sea-moss.png",
+      "youtube_url": "",
+      "price": "",
+      "was_price": "",
+      "category": "promo",
+      "brand": "",
+      "subtitle": "",
+      "description": "",
+      "tags": "",
+      "status": "active",
+      "order": 999,
+      "source": "promo",
+      "notes": "Promotional banner",
+      "updated_at": "2026-05-08T15:30:26.115660"
     }
   ],
   "settings": {
