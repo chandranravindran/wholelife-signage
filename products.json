@@ -99,6 +99,26 @@
       "source": "promo",
       "notes": "Promotional banner",
       "updated_at": "2026-05-13T12:37:03.236154"
+    },
+    {
+      "id": 20,
+      "type": "promo",
+      "name": "difflam ",
+      "image_url": "/static/images/difflam.png",
+      "display_image": "/static/images/difflam.png",
+      "youtube_url": "",
+      "price": "",
+      "was_price": "",
+      "category": "promo",
+      "brand": "",
+      "subtitle": "",
+      "description": "",
+      "tags": "",
+      "status": "active",
+      "order": 999,
+      "source": "promo",
+      "notes": "Promotional banner",
+      "updated_at": "2026-05-13T12:39:22.818524"
     }
   ],
   "settings": {
