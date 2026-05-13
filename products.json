@@ -99,6 +99,26 @@
       "source": "promo",
       "notes": "Promotional banner",
       "updated_at": "2026-05-13T12:39:22.818524"
+    },
+    {
+      "id": 21,
+      "type": "promo",
+      "name": "happyway",
+      "image_url": "/static/images/happyway.png",
+      "display_image": "/static/images/happyway.png",
+      "youtube_url": "",
+      "price": "",
+      "was_price": "",
+      "category": "promo",
+      "brand": "",
+      "subtitle": "",
+      "description": "",
+      "tags": "",
+      "status": "active",
+      "order": 999,
+      "source": "promo",
+      "notes": "Promotional banner",
+      "updated_at": "2026-05-13T12:51:36.939312"
     }
   ],
   "settings": {
