@@ -61,26 +61,6 @@
       "updated_at": "2026-05-13T09:53:06.584179"
     },
     {
-      "id": 19,
-      "type": "promo",
-      "name": "Benadryl",
-      "image_url": "/static/images/benadryl.png",
-      "display_image": "/static/images/benadryl.png",
-      "youtube_url": "",
-      "price": "",
-      "was_price": "",
-      "category": "promo",
-      "brand": "",
-      "subtitle": "",
-      "description": "",
-      "tags": "",
-      "status": "active",
-      "order": 999,
-      "source": "promo",
-      "notes": "Promotional banner",
-      "updated_at": "2026-05-13T12:37:03.236154"
-    },
-    {
       "id": 22,
       "type": "promo",
       "name": "Trial",
