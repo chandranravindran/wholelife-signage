@@ -120,6 +120,26 @@
       "notes": "MP4 on R2: trial.mp4",
       "updated_at": "2026-05-20T12:12:13.067757",
       "video_type": "mp4"
+    },
+    {
+      "id": 23,
+      "type": "promo",
+      "name": "Happy Way ",
+      "image_url": "/static/images/happy-way.png",
+      "display_image": "/static/images/happy-way.png",
+      "youtube_url": "",
+      "price": "",
+      "was_price": "",
+      "category": "promo",
+      "brand": "",
+      "subtitle": "",
+      "description": "",
+      "tags": "",
+      "status": "active",
+      "order": 999,
+      "source": "promo",
+      "notes": "Promotional banner",
+      "updated_at": "2026-05-21T10:25:12.785385"
     }
   ],
   "settings": {
