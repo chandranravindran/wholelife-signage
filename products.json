@@ -120,6 +120,26 @@
       "source": "promo",
       "notes": "Promotional banner",
       "updated_at": "2026-05-21T10:25:44.720527"
+    },
+    {
+      "id": 25,
+      "type": "promo",
+      "name": "Benadryl",
+      "image_url": "/static/images/benadryl.png",
+      "display_image": "/static/images/benadryl.png",
+      "youtube_url": "",
+      "price": "",
+      "was_price": "",
+      "category": "promo",
+      "brand": "",
+      "subtitle": "",
+      "description": "",
+      "tags": "",
+      "status": "active",
+      "order": 999,
+      "source": "promo",
+      "notes": "Promotional banner",
+      "updated_at": "2026-05-21T10:26:19.241825"
     }
   ],
   "settings": {
