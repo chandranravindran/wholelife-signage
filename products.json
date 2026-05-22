@@ -41,27 +41,6 @@
       "updated_at": "2026-05-06T17:24:42.450766"
     },
     {
-      "id": 22,
-      "type": "promo",
-      "name": "Trial",
-      "image_url": "",
-      "display_image": "",
-      "youtube_url": "https://pub-728f7bce075c403f8696985fe67774b1.r2.dev/trial.mp4",
-      "price": "",
-      "was_price": "",
-      "category": "promo",
-      "brand": "",
-      "subtitle": "",
-      "description": "",
-      "tags": "",
-      "status": "active",
-      "order": 999,
-      "source": "promo",
-      "notes": "MP4 on R2: trial.mp4",
-      "updated_at": "2026-05-20T12:12:13.067757",
-      "video_type": "mp4"
-    },
-    {
       "id": 23,
       "type": "promo",
       "name": "Happy Way ",
