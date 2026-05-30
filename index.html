@@ -4,16 +4,12 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>WholeLife Display</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="preload" href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700;800;900&display=swap" as="style" onload="this.rel='stylesheet'">
 <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700;800;900&display=swap" rel="stylesheet">
 <style>
   * { box-sizing: border-box; margin: 0; padding: 0; }
   html, body {
     width: 100%; height: 100%; overflow: hidden;
-    background: #fff;
-    font-family: 'Nunito', 'Arial Rounded MT Bold', Arial, sans-serif;
+    background: #fff; font-family: 'Nunito', sans-serif;
   }
 
   /* ── Slide wrapper ── */
@@ -193,8 +189,7 @@
   #loadOverlay {
     position: fixed; inset: 0; background: #62457C;
     display: flex; flex-direction: column; align-items: center; justify-content: center;
-    gap: 24px; z-index: 9999;
-    width: 100vw; height: 100vh;
+    gap: 24px; z-index: 999;
   }
   #loadOverlay img { height: 70px; filter: brightness(0) invert(1); }
   #loadOverlay p { color: rgba(255,255,255,.7); font-size: 16px; }
@@ -520,10 +515,6 @@ async function init() {
 
   renderSlides();
   buildTicker();
-
-  // Wait for fonts before revealing
-  await document.fonts.ready;
-
   document.getElementById('loadOverlay').style.display = 'none';
   // Preload all videos immediately
   document.querySelectorAll('.slide video').forEach(v => v.load());
@@ -534,25 +525,6 @@ async function init() {
 }
 
 init();
-
-// When Chrome tab-casting begins, it briefly resizes the viewport.
-// Force the slide container to re-fill correctly on any resize.
-let resizeTimer;
-window.addEventListener('resize', () => {
-  clearTimeout(resizeTimer);
-  resizeTimer = setTimeout(() => {
-    const container = document.getElementById('slideContainer');
-    if (container) {
-      container.style.width  = window.innerWidth  + 'px';
-      container.style.height = window.innerHeight + 'px';
-      // Reset after one frame so vw/vh units take back over cleanly
-      requestAnimationFrame(() => {
-        container.style.width  = '';
-        container.style.height = '';
-      });
-    }
-  }, 150);
-});
 </script>
 
 </body>
