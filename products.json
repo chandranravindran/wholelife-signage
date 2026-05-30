@@ -119,6 +119,26 @@
       "source": "promo",
       "notes": "Promotional banner",
       "updated_at": "2026-05-21T10:29:14.133285"
+    },
+    {
+      "id": 27,
+      "type": "promo",
+      "name": "Flu65Plus",
+      "image_url": "/static/images/flu65plus.png",
+      "display_image": "/static/images/flu65plus.png",
+      "youtube_url": "",
+      "price": "",
+      "was_price": "",
+      "category": "promo",
+      "brand": "",
+      "subtitle": "",
+      "description": "",
+      "tags": "",
+      "status": "active",
+      "order": 999,
+      "source": "promo",
+      "notes": "Promotional banner",
+      "updated_at": "2026-05-30T13:20:10.588899"
     }
   ],
   "settings": {
