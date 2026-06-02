@@ -139,6 +139,26 @@
       "source": "promo",
       "notes": "Promotional banner",
       "updated_at": "2026-05-30T13:20:10.588899"
+    },
+    {
+      "id": 28,
+      "type": "promo",
+      "name": "Flumist",
+      "image_url": "/static/images/flumist.png",
+      "display_image": "/static/images/flumist.png",
+      "youtube_url": "",
+      "price": "",
+      "was_price": "",
+      "category": "promo",
+      "brand": "",
+      "subtitle": "",
+      "description": "",
+      "tags": "",
+      "status": "active",
+      "order": 999,
+      "source": "promo",
+      "notes": "Promotional banner",
+      "updated_at": "2026-06-03T08:35:52.556888"
     }
   ],
   "settings": {
