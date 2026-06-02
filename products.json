@@ -159,6 +159,26 @@
       "source": "promo",
       "notes": "Promotional banner",
       "updated_at": "2026-06-03T08:35:52.556888"
+    },
+    {
+      "id": 29,
+      "type": "promo",
+      "name": "RSV",
+      "image_url": "/static/images/rsv.png",
+      "display_image": "/static/images/rsv.png",
+      "youtube_url": "",
+      "price": "",
+      "was_price": "",
+      "category": "promo",
+      "brand": "",
+      "subtitle": "",
+      "description": "",
+      "tags": "",
+      "status": "active",
+      "order": 999,
+      "source": "promo",
+      "notes": "Promotional banner",
+      "updated_at": "2026-06-03T08:36:09.943007"
     }
   ],
   "settings": {
