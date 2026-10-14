@@ -99,6 +99,26 @@
       "source": "promo",
       "notes": "Promotional banner",
       "updated_at": "2026-10-14T16:17:21.623890"
+    },
+    {
+      "id": 39,
+      "type": "promo",
+      "name": "Promo3",
+      "image_url": "/static/images/promo3.png",
+      "display_image": "/static/images/promo3.png",
+      "youtube_url": "",
+      "price": "",
+      "was_price": "",
+      "category": "promo",
+      "brand": "",
+      "subtitle": "",
+      "description": "",
+      "tags": "",
+      "status": "active",
+      "order": 999,
+      "source": "promo",
+      "notes": "Promotional banner",
+      "updated_at": "2026-10-14T16:17:35.342763"
     }
   ],
   "settings": {
