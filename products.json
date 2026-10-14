@@ -81,6 +81,26 @@
       "updated_at": "2026-10-14T16:12:35.229854"
     },
     {
+      "id": 35,
+      "type": "product",
+      "url": "",
+      "name": "Slide5",
+      "image_url": "/static/images/slide5.png",
+      "display_image": "/static/images/slide5.png",
+      "price": "",
+      "was_price": "",
+      "category": "",
+      "brand": "",
+      "subtitle": "",
+      "description": "",
+      "tags": "",
+      "status": "active",
+      "order": 0,
+      "source": "manual",
+      "notes": "",
+      "updated_at": "2026-10-14T16:12:50.446366"
+    },
+    {
       "id": 13,
       "type": "promo",
       "name": "Click and collect",
