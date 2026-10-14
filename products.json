@@ -41,6 +41,26 @@
       "updated_at": "2026-10-14T16:11:56.178772"
     },
     {
+      "id": 33,
+      "type": "product",
+      "url": "",
+      "name": "Slide3",
+      "image_url": "/static/images/slide3.png",
+      "display_image": "/static/images/slide3.png",
+      "price": "",
+      "was_price": "",
+      "category": "",
+      "brand": "",
+      "subtitle": "",
+      "description": "",
+      "tags": "",
+      "status": "active",
+      "order": 0,
+      "source": "manual",
+      "notes": "",
+      "updated_at": "2026-10-14T16:12:19.364345"
+    },
+    {
       "id": 13,
       "type": "promo",
       "name": "Click and collect",
