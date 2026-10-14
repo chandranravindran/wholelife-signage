@@ -179,6 +179,26 @@
       "source": "promo",
       "notes": "Promotional banner",
       "updated_at": "2026-06-08T15:47:19.222630"
+    },
+    {
+      "id": 37,
+      "type": "promo",
+      "name": "Promo1",
+      "image_url": "/static/images/promo1.png",
+      "display_image": "/static/images/promo1.png",
+      "youtube_url": "",
+      "price": "",
+      "was_price": "",
+      "category": "promo",
+      "brand": "",
+      "subtitle": "",
+      "description": "",
+      "tags": "",
+      "status": "active",
+      "order": 999,
+      "source": "promo",
+      "notes": "Promotional banner",
+      "updated_at": "2026-10-14T16:16:48.473217"
     }
   ],
   "settings": {
