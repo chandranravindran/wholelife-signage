@@ -1,46 +1,6 @@
 {
   "slides": [
     {
-      "id": 35,
-      "type": "product",
-      "url": "",
-      "name": "Slide5",
-      "image_url": "/static/images/slide5.png",
-      "display_image": "/static/images/slide5.png",
-      "price": "",
-      "was_price": "",
-      "category": "",
-      "brand": "",
-      "subtitle": "",
-      "description": "",
-      "tags": "",
-      "status": "active",
-      "order": 0,
-      "source": "manual",
-      "notes": "",
-      "updated_at": "2026-10-14T16:12:50.446366"
-    },
-    {
-      "id": 36,
-      "type": "product",
-      "url": "",
-      "name": "Slide6",
-      "image_url": "/static/images/slide6.png",
-      "display_image": "/static/images/slide6.png",
-      "price": "",
-      "was_price": "",
-      "category": "",
-      "brand": "",
-      "subtitle": "",
-      "description": "",
-      "tags": "",
-      "status": "active",
-      "order": 0,
-      "source": "manual",
-      "notes": "",
-      "updated_at": "2026-10-14T16:13:04.298287"
-    },
-    {
       "id": 13,
       "type": "promo",
       "name": "Click and collect",
@@ -119,6 +79,26 @@
       "source": "promo",
       "notes": "Promotional banner",
       "updated_at": "2026-10-14T16:16:48.473217"
+    },
+    {
+      "id": 38,
+      "type": "promo",
+      "name": "Promo2",
+      "image_url": "/static/images/promo2.png",
+      "display_image": "/static/images/promo2.png",
+      "youtube_url": "",
+      "price": "",
+      "was_price": "",
+      "category": "promo",
+      "brand": "",
+      "subtitle": "",
+      "description": "",
+      "tags": "",
+      "status": "active",
+      "order": 999,
+      "source": "promo",
+      "notes": "Promotional banner",
+      "updated_at": "2026-10-14T16:17:21.623890"
     }
   ],
   "settings": {
