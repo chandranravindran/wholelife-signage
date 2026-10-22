@@ -61,6 +61,26 @@
       "updated_at": "2026-10-22T15:10:11.799116"
     },
     {
+      "id": 46,
+      "type": "product",
+      "url": "https://wholelife.com.au/product/hair-ritual-150g/",
+      "name": "Hair Ritual 150g | WholeLife",
+      "image_url": "https://wholelife.b-cdn.net/wp-content/uploads/2026/09/Hair-Ritual-150-g-.jpg",
+      "display_image": "https://wholelife.b-cdn.net/wp-content/uploads/2026/09/Hair-Ritual-150-g-.jpg",
+      "price": "69.99",
+      "was_price": "",
+      "category": "beauty",
+      "brand": "",
+      "subtitle": "",
+      "description": "",
+      "tags": "Trending",
+      "status": "active",
+      "order": 0,
+      "source": "wholelife",
+      "notes": "Fetched OK",
+      "updated_at": "2026-10-22T15:11:13.196338"
+    },
+    {
       "id": 13,
       "type": "promo",
       "name": "Click and collect",
