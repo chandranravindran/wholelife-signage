@@ -41,6 +41,26 @@
       "updated_at": "2026-10-22T15:09:07.543941"
     },
     {
+      "id": 45,
+      "type": "product",
+      "url": "https://wholelife.com.au/product/100-pure-creatine-monohydrate-400g/",
+      "name": "100% Pure Creatine Monohydrate 400g | WholeLife",
+      "image_url": "https://wholelife.b-cdn.net/wp-content/uploads/2026/01/100-Pure-Creatine-Monohydrate-400g-.jpg",
+      "display_image": "https://wholelife.b-cdn.net/wp-content/uploads/2026/01/100-Pure-Creatine-Monohydrate-400g-.jpg",
+      "price": "46.99",
+      "was_price": "",
+      "category": "",
+      "brand": "",
+      "subtitle": "",
+      "description": "",
+      "tags": "Trending",
+      "status": "active",
+      "order": 0,
+      "source": "wholelife",
+      "notes": "Fetched OK",
+      "updated_at": "2026-10-22T15:10:11.799116"
+    },
+    {
       "id": 13,
       "type": "promo",
       "name": "Click and collect",
