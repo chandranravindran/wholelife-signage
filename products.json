@@ -21,6 +21,26 @@
       "updated_at": "2026-10-14T16:18:59.051222"
     },
     {
+      "id": 44,
+      "type": "product",
+      "url": "https://wholelife.com.au/product/post-menopause-wellness-60-tablets/",
+      "name": "Post Menopause Wellness 60 Tablets | WholeLife",
+      "image_url": "https://wholelife.b-cdn.net/wp-content/uploads/2026/09/Post-Menopause-Wellness-60-Tablets.jpg",
+      "display_image": "https://wholelife.b-cdn.net/wp-content/uploads/2026/09/Post-Menopause-Wellness-60-Tablets.jpg",
+      "price": "49.99",
+      "was_price": "",
+      "category": "",
+      "brand": "",
+      "subtitle": "",
+      "description": "",
+      "tags": "Trending",
+      "status": "active",
+      "order": 0,
+      "source": "wholelife",
+      "notes": "Fetched OK",
+      "updated_at": "2026-10-22T15:08:55.402722"
+    },
+    {
       "id": 13,
       "type": "promo",
       "name": "Click and collect",
