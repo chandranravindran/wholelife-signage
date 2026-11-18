@@ -39,6 +39,26 @@
       "source": "promo",
       "notes": "Promotional banner",
       "updated_at": "2026-11-18T14:14:41.045080"
+    },
+    {
+      "id": 15,
+      "type": "promo",
+      "name": "POTION",
+      "image_url": "/static/images/potion.png",
+      "display_image": "/static/images/potion.png",
+      "youtube_url": "",
+      "price": "",
+      "was_price": "",
+      "category": "promo",
+      "brand": "",
+      "subtitle": "",
+      "description": "",
+      "tags": "",
+      "status": "active",
+      "order": 999,
+      "source": "promo",
+      "notes": "Promotional banner",
+      "updated_at": "2026-11-18T14:14:53.619877"
     }
   ],
   "settings": {
