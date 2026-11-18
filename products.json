@@ -79,6 +79,26 @@
       "source": "promo",
       "notes": "Promotional banner",
       "updated_at": "2026-11-18T14:15:05.338509"
+    },
+    {
+      "id": 17,
+      "type": "promo",
+      "name": "LIONS",
+      "image_url": "/static/images/lions.png",
+      "display_image": "/static/images/lions.png",
+      "youtube_url": "",
+      "price": "",
+      "was_price": "",
+      "category": "promo",
+      "brand": "",
+      "subtitle": "",
+      "description": "",
+      "tags": "",
+      "status": "active",
+      "order": 999,
+      "source": "promo",
+      "notes": "Promotional banner",
+      "updated_at": "2026-11-18T14:15:14.878244"
     }
   ],
   "settings": {
