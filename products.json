@@ -19,6 +19,26 @@
       "source": "promo",
       "notes": "Promotional banner",
       "updated_at": "2026-05-06T17:24:42.450766"
+    },
+    {
+      "id": 14,
+      "type": "promo",
+      "name": "NATIO",
+      "image_url": "/static/images/natio.png",
+      "display_image": "/static/images/natio.png",
+      "youtube_url": "",
+      "price": "",
+      "was_price": "",
+      "category": "promo",
+      "brand": "",
+      "subtitle": "",
+      "description": "",
+      "tags": "",
+      "status": "active",
+      "order": 999,
+      "source": "promo",
+      "notes": "Promotional banner",
+      "updated_at": "2026-11-18T14:14:41.045080"
     }
   ],
   "settings": {
